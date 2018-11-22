@@ -1,0 +1,41 @@
+.tech-box-content {
+  align-items: center;
+  background-color: $green;
+  border-radius: $tech-radius;
+  display: flex;
+  flex-direction: column;
+  height: $tech-height;
+  justify-content: space-around;
+  margin: $margin-tech 10px;
+  padding: 15px 25px 35px 10px;
+  position: relative;
+  width: $tech-width;
+
+  img {
+    width: $tech-logo-size;
+  }
+
+  .title-tech {
+    font-size: $text-medium;
+  }
+
+  .title-rel,
+  p {
+    font-size: $text-small;
+  }
+
+  p {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  &::before {
+    border: 1px solid $green;
+    border-radius: $tech-radius;
+    content : '';
+    height: $tech-height;
+    position: absolute;
+    width: $tech-width;
+    z-index: -1;
+  }
+}

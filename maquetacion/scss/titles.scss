@@ -1,8 +1,4 @@
-@import 'variables';
-
 .title {
-  
-  font-family: 'Roboto', serif;
   font-size: $text-big;
   height: $title-decoration-height;
   line-height: $title-decoration-height;
@@ -10,8 +6,8 @@
   
   &::before{
     content: url(assets/triangle.svg);
-    position: absolute;
     height: $title-decoration-height;
+    position: absolute;
     width: $title-decoration-width;
     z-index: -1;
     left: 18px;
