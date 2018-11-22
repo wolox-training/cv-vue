@@ -1,12 +1,19 @@
 @import 'variables';
 
 .title {
-  background-image: url(assets/triangle.svg);
-  background-repeat: no-repeat;
+  
   font-family: 'Roboto', serif;
   font-size: $text-big;
   height: $title-decoration-height;
-  line-height: $title-decoration-height;;
-  text-indent: 50px;
+  line-height: $title-decoration-height;
   margin: $title-decoration-height $title-decoration-width;
+  
+  &::before{
+    content: url(assets/triangle.svg);
+    position: absolute;
+    height: $title-decoration-height;
+    width: $title-decoration-width;
+    z-index: -1;
+    left: 18px;
+  }
 }
