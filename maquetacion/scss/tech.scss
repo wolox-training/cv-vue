@@ -1,4 +1,4 @@
-.tech-box-content {
+.tech-box-card {
   align-items: center;
   background-color: $green;
   border-radius: $tech-radius;
@@ -11,21 +11,21 @@
   position: relative;
   width: $tech-width;
 
-  img {
+  .card-img {
     width: $tech-logo-size;
   }
 
-  .title-tech {
+  .card-title {
     font-size: $text-medium;
   }
 
-  .title-rel,
-  p {
+  .card-rel,
+  .card-content {
     font-size: $text-small;
     margin-bottom: 10px;
   }
 
-  p {
+  .card-content {
     text-align: center;
   }
 
