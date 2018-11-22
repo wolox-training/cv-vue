@@ -1,34 +1,33 @@
-.tech-box-content {
+.tech-box-card {
   align-items: center;
   background-color: $green;
   border-radius: $tech-radius;
   display: flex;
   flex-direction: column;
   height: $tech-height;
-  // justify-content: space-around;
   margin: $margin-tech 10px;
   padding: 15px 25px 25px 10px;
   position: relative;
   width: $tech-width;
 
-  img {
-    max-width: $tech-logo-size;
+  .card-img {
     height: $tech-logo-size;
     margin-bottom: 10px;
+    width: $tech-logo-size;
   }
 
-  .title-tech {
+  .card-title {
     font-size: $text-medium;
     margin-bottom: 5px;
   }
 
-  .title-rel,
-  p {
+  .card-rel,
+  .card-content {
     font-size: $text-small;
     margin-bottom: 10px;
   }
 
-  p {
+  .card-content {
     text-align: center;
   }
 

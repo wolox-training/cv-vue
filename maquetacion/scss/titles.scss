@@ -2,7 +2,7 @@
   font-size: $text-big;
   height: $title-decoration-height;
   line-height: $title-decoration-height;
-  margin: 0 $title-decoration-width;
+  margin: $title-decoration-height $title-decoration-width 0;
   position: relative;
 
   &::before{
