@@ -7,9 +7,9 @@
   &::before{
     content: url(assets/triangle.svg);
     height: $title-decoration-height;
+    left: 18px;
     position: absolute;
     width: $title-decoration-width;
     z-index: -1;
-    left: 18px;
   }
 }
