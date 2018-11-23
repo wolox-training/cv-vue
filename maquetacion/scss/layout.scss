@@ -5,7 +5,15 @@
 }
 
 .tech-info {
-  display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
   margin: 0 85px;
+}
+
+.tech-other-box {
+  border-left: 1px solid $green;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
