@@ -36,17 +36,16 @@
     border-radius: $tech-radius;
     content : '';
     height: $tech-height;
-    top: -10px;
-    left: -10px;
-    transition: all 1s ease-out;
+    top: -$transition-val;
+    left: -$transition-val;
+    transition: all 0.5s ease-out;
     position: absolute;
     width: $tech-width;
     z-index: -1;    
   }
 
   &:hover::before {
-    top: 10px;
-    left: 10px;
+    top: $transition-val;
+    left: $transition-val;
   }  
-
 }
