@@ -5,47 +5,47 @@
   display: flex;
   flex-direction: column;
   height: $tech-height;
-  margin: $margin-tech 15px;
+  margin: 20px 15px;
   padding: 15px 25px 25px 10px;
   position: relative;
   width: $tech-width;
-
-  .card-img {
-    height: $tech-logo-size;
-    margin-bottom: 10px;
-    width: $tech-logo-size;
-  }
-
-  .card-title {
-    font-size: $text-medium;
-    margin-bottom: 5px;
-  }
-
-  .card-rel,
-  .card-content {
-    font-size: $text-small;
-    margin-bottom: 10px;
-  }
-
-  .card-content {
-    text-align: center;
-  }
 
   &::before {
     border: 1px solid $green;
     border-radius: $tech-radius;
     content : '';
     height: $tech-height;
-    top: -$transition-val;
-    left: -$transition-val;
+    left: -$space-before-el;
     transition: all 0.5s ease-out;
     position: absolute;
+    top: -$space-before-el;
     width: $tech-width;
     z-index: -1;    
   }
 
   &:hover::before {
-    top: $transition-val;
-    left: $transition-val;
-  }
+    top: $space-before-el;
+    left: $space-before-el;
+  }  
+}
+
+.card-img {
+  height: $tech-logo-size;
+  margin-bottom: $tech-common-mar;
+  width: $tech-logo-size;
+}
+
+.card-title {
+  font-size: $text-medium;
+  margin-bottom: $tech-common-mar/2;
+}
+
+.card-rel,
+.card-content {
+  font-size: $text-small;
+  margin-bottom: $tech-common-mar;
+}
+
+.card-content {
+  text-align: center;
 }
