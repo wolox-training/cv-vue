@@ -7,7 +7,7 @@
   height: $tech-height;
   justify-content: space-around;
   margin: $margin-tech $tech-common-mar;
-  padding: 15px 25px 25px 10px;
+  padding: $tech-padd-top $tech-padd-right $tech-padd-bottom $tech-padd-left;
   position: relative;
   width: $tech-width;
 
@@ -39,4 +39,3 @@
 .card-content {
   text-align: center;
 }
-
