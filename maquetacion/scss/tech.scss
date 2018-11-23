@@ -16,6 +16,7 @@
     content : '';
     height: $tech-height;
     left: -$space-before-el;
+    transition: all 0.5s ease-out;
     position: absolute;
     top: -$space-before-el;
     width: $tech-width;
@@ -25,7 +26,7 @@
   &:hover::before {
     top: $space-before-el;
     left: $space-before-el;
-  }
+  }  
 }
 
 .card-img {
