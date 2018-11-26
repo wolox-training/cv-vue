@@ -19,3 +19,13 @@
     font-size: $text-big;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .nav-img {
+    height: 50%;
+  }
+
+  .nav-text {
+    display: none;
+  }
+}

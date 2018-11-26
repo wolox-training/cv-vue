@@ -22,3 +22,18 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+@media screen and (max-width: 1024px) {
+  .tech-info {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-other-box {
+    grid-template-columns: 1fr;
+    border-left: none;
+    
+    .tech-box {
+      border-top: 2px solid $green;
+    }
+  }
+}
