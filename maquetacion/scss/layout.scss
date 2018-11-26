@@ -10,6 +10,11 @@
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   margin: 0 85px;
+
+  .tech-box {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .tech-other-box {
