@@ -1,9 +1,9 @@
 .footer-pag {
+  align-items: center;
   background-color: $blue;
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  align-items: center;
+  margin-top: center;
   width: 100%;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .footer-img {
-  height: 30%;
+  height: 50px;
   margin: 10px 0;
 }
 
