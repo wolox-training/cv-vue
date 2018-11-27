@@ -15,9 +15,9 @@
     border-radius: $tech-radius;
     content : '';
     height: $tech-height;
-    left: -$space-before-el;
+    left: -10px;
     position: absolute;
-    top: -$space-before-el;
+    top: -10px;
     width: $tech-width;
     z-index: -1;
   }
