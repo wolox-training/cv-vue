@@ -1,0 +1,29 @@
+.footer-pag {
+  align-items: center;
+  background-color: $blue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.footer-title,
+.footer-text {
+  color: white;
+}
+
+.footer-title {
+  margin-top: 20px;
+  font-size: $text-big;
+  text-transform: uppercase;
+}
+
+.footer-img {
+  height: 50px;
+  margin: 10px 0;
+}
+
+.footer-text {
+  margin: 10px 15px;
+  font-size: $text-small;
+  align-self: flex-end;
+}
