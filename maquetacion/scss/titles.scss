@@ -2,13 +2,14 @@
   font-size: $text-big;
   height: $title-decoration-height;
   line-height: $title-decoration-height;
-  margin: $title-decoration-height $title-decoration-width;
-  
+  margin: $title-decoration-height $title-decoration-width 0;
+  position: relative;
+
   &::before{
     content: url(assets/triangle.svg);
     height: $title-decoration-height;
-    left: 18px;
     position: absolute;
+    left: -50px;
     width: $title-decoration-width;
     z-index: -1;
   }

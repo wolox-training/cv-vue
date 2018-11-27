@@ -5,9 +5,8 @@
   display: flex;
   flex-direction: column;
   height: $tech-height;
-  justify-content: space-around;
-  margin: $margin-tech $tech-common-mar;
-  padding: $tech-padd-top $tech-padd-right $tech-padd-bottom $tech-padd-left;
+  margin: 20px 15px;
+  padding: 15px 25px 25px 10px;
   position: relative;
   width: $tech-width;
 
@@ -16,18 +15,23 @@
     border-radius: $tech-radius;
     content : '';
     height: $tech-height;
+    left: -10px;
     position: absolute;
+    top: -10px;
     width: $tech-width;
     z-index: -1;
   }
 }
 
 .card-img {
+  height: $tech-logo-size;
+  margin-bottom: $tech-common-mar;
   width: $tech-logo-size;
 }
 
 .card-title {
   font-size: $text-medium;
+  margin-bottom: $tech-common-mar/2;
 }
 
 .card-rel,
