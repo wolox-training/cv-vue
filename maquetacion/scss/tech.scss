@@ -1,6 +1,6 @@
 .tech-box-card {
   align-items: center;
-  background-color: $green;
+  background-color: white;
   border-radius: $tech-radius;
   display: flex;
   flex-direction: column;
@@ -9,24 +9,6 @@
   padding: 15px 25px 25px 10px;
   position: relative;
   width: $tech-width;
-
-  &::before {
-    border: 1px solid $green;
-    border-radius: $tech-radius;
-    content : '';
-    height: $tech-height;
-    left: -10px;
-    transition: all 0.5s ease-out;
-    position: absolute;
-    top: -10px;
-    width: $tech-width;
-    z-index: -1;
-  }
-
-  &:hover::before {
-    left: 10px;
-    top: 10px;
-  }  
 }
 
 .card-img {
@@ -48,4 +30,10 @@
 
 .card-content {
   text-align: center;
+}
+
+.tech-box {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }

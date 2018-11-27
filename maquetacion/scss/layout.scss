@@ -1,11 +1,19 @@
 @import 'variables';
 
 .layout {
-  margin: 0 5%;
+  margin: 0 150px;
 }
 
 .tech-info {
-  display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
   margin: 0 85px;
+
+  .tech-box:first-child {
+    border-right: 1px solid $green;
+    height: 100%;
+    grid-row: 1 / 3;
+  }
 }
