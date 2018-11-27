@@ -16,11 +16,17 @@
     content : '';
     height: $tech-height;
     left: -10px;
+    transition: all 0.5s ease-out;
     position: absolute;
     top: -10px;
     width: $tech-width;
     z-index: -1;
   }
+
+  &:hover::before {
+    left: 10px;
+    top: 10px;
+  }  
 }
 
 .card-img {
