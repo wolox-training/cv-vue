@@ -15,17 +15,17 @@
     border-radius: $tech-radius;
     content : '';
     height: $tech-height;
-    left: -$space-before-el;
+    left: -10px;
     transition: all 0.5s ease-out;
     position: absolute;
-    top: -$space-before-el;
+    top: -10px;
     width: $tech-width;
-    z-index: -1;    
+    z-index: -1;
   }
 
   &:hover::before {
-    top: $space-before-el;
-    left: $space-before-el;
+    left: 10px;
+    top: 10px;
   }  
 }
 
