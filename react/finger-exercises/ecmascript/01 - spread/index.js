@@ -11,6 +11,5 @@ export function min(...args) {
 }
 
 export function copy(args) {
-  const {...copy} = args;
-  return copy;
+  return isArray(args) ? [...args] : {...args};
 }
