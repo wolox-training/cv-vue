@@ -13,3 +13,7 @@ export function min(...args) {
 export function copy(args) {
   return isArray(args) ? [...args] : {...args};
 }
+
+export function reverseMerge(arr1, arr2) {
+  return [ ...arr2, ...arr1]
+}
