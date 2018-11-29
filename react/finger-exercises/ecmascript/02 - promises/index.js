@@ -2,8 +2,9 @@
 
 export function delay(time) {
   const refTime = Date.now();
+  const longTime = 1000;
   return new Promise((resolve, reject) => {
-    if(time < 1000 ) 
+    if(time < longTime ) 
       setTimeout(() => resolve(Date.now() - refTime)
       , time)
     else 
@@ -11,6 +12,6 @@ export function delay(time) {
   })
 }
 
-export function asyncDelay() {
-  
+export function asyncDelay(time) {
+  return delay(time).then(delayedTime => delayedTime);
 }
