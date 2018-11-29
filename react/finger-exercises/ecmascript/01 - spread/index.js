@@ -10,6 +10,7 @@ export function min(...args) {
     return undefined;
 }
 
-export function copy() {
-
+export function copy(args) {
+  const {...copy} = args;
+  return copy;
 }
