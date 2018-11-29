@@ -28,3 +28,19 @@
   font-size: $text-small;
   align-self: flex-end;
 }
+
+@media screen and (max-width: 1024px) {
+  .footer-img {
+    height: 25px;
+  }
+
+  .footer-title {
+    font-size: $text-small;
+  }
+
+  .footer-text {
+    font-size: $text-very-small;
+    align-self: center;
+    margin: 20px 0;
+  }
+}
