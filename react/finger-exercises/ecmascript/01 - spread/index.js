@@ -1,13 +1,12 @@
 import { isArray } from './utils';
 
 export function min(...args) {
-  if(args.length && isArray(...args)){
-    const [newArgs] = args;
-    return Math.min(...newArgs);
+  if(args.length && isArray(args[0])){
+    return Math.min(...args[0]);
   } else if (args.length) {
     return Math.min(...args);
-  } else 
-    return undefined;
+  } 
+  return undefined;
 }
 
 export function copy(args) {
@@ -18,7 +17,6 @@ export function reverseMerge(arr1, arr2) {
   return [ ...arr2, ...arr1]
 }
 
-export function filterAttribs(obj) {
-  const {a, b , ...other } = obj;
+export function filterAttribs({a, b, ...other }) {
   return other;
 }

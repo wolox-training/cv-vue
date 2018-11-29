@@ -13,5 +13,5 @@ export function delay(time) {
 }
 
 export function asyncDelay(time) {
-  return delay(time).then(delayedTime => delayedTime);
+  return delay(time);
 }
