@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Square from './components/Square';
 import styles from './styles.module.scss'
