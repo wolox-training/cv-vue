@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles.css';
+import './styles.module.scss';
 import Game from './components/Game';
 import * as serviceWorker from './serviceWorker';
 
