@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import Square from './components/Square';
 import styles from './styles.module.scss'
 
 class Board extends Component {
+  state = {
+    squares: Array(9).fill(null)
+  };
+
+  handleClick = (i) => {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares})
+  };
+
   renderSquare(i) {
-    return <Square />;
+    return (
+      <Square 
+        value={this.state.squares[i]}
+        onClick={() => this.handleClick(i)}
+      />
+    )
   }
 
   render() {
