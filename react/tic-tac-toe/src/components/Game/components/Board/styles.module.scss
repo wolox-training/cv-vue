@@ -1,4 +1,4 @@
-.boardRow:after {
+.boardRow::after {
   clear: both;
   content: "";
   display: table;

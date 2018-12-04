@@ -10,7 +10,7 @@ class Board extends Component {
       <Square 
         value={this.props.squares[i]}
         onClick={this.handleClick}
-        id = {i}
+        id={i}
       />
     )
   }
