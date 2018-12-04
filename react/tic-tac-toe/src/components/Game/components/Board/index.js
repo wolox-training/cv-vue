@@ -9,11 +9,14 @@ class Board extends Component {
     return (
       <Square 
         value={this.props.squares[i]}
-        onClick={() => this.props.onClick(i)}
+        onClick={this.handleClick}
+        id = {i}
       />
     )
   }
 
+  handleClick = (i) => this.props.onClick(i)
+  
   render() {
     return (
       <>
@@ -38,7 +41,7 @@ class Board extends Component {
 }
 
 Board.propTypes = {
-  squares: PropTypes.array,
+  squares: PropTypes.object,
   onClick: PropTypes.func
 };
 

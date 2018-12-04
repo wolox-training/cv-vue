@@ -7,7 +7,7 @@ function Square(props) {
   return (
     <button 
       className={styles.square} 
-      onClick={() => props.onClick()}
+      onClick={() => props.onClick(props.id)}
     >
       {props.value}
     </button>
@@ -15,6 +15,7 @@ function Square(props) {
 }
 
 Square.propTypes = {
+  id: PropTypes.number,
   onClick: PropTypes.func,
   value: PropTypes.string
 };
