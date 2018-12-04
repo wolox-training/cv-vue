@@ -4,14 +4,6 @@ import Square from './components/Square';
 import styles from './styles.module.scss'
 
 class Board extends Component {
-  state = {
-    history:[{
-      squares: Array(9).fill(null),
-    }],
-    xIsNext: true,
-  };
-
-
   renderSquare(i) {
     return (
       <Square 
