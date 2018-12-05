@@ -13,20 +13,25 @@ import styles from './styles.scss';
 class App extends Component {
   state = {
     books: [],
-    bookSelected: []
+    bookSelected: [],
+    originalData: []
   };
 
   componentDidMount() {
     store.subscribe(() => {
-      const { books, bookSelected } = store.getState();
-      this.setState({ books, bookSelected });
+      const { books, bookSelected, originalData } = store.getState();
+      this.setState({ books, bookSelected, originalData });
     });
     store.dispatch(actions.getBooks())
     // TODO to implement the dispatch
   }
 
   // TODO to implement the dispatch
-  onSearch = value => {};
+  onSearch = value => {
+    let { originalData: books } = this.state; 
+    books = books.filter(book => book.name.includes(value))
+    store.dispatch(actions.searchBook(books));
+  };
 
   // TODO to implement the dispatch
   addToCart = item => {};
