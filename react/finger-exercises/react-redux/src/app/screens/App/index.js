@@ -9,7 +9,6 @@ import Search from './components/Search';
 import ShoppingCart from './components/ShoppingCart';
 import styles from './styles.scss';
 
-
 class App extends Component {
   state = {
     books: [],
@@ -34,7 +33,11 @@ class App extends Component {
   };
 
   // TODO to implement the dispatch
-  addToCart = item => {};
+  addToCart = item => {
+    let [...cart] = this.state.bookSelected;
+    cart.push(item);
+    store.dispatch(actions.addToCart(cart))
+  };
 
   // TODO to implement the dispatch
   addItem = itemId => {};
