@@ -2,11 +2,13 @@ import React, { Component, Fragment } from 'react';
 import store from '@redux/store';
 import Navbar from '@components/Navbar';
 import Footer from '@components/Footer';
+import actions from '@redux/book/actions';
 
 import Book from './components/Book';
 import Search from './components/Search';
 import ShoppingCart from './components/ShoppingCart';
 import styles from './styles.scss';
+
 
 class App extends Component {
   state = {
@@ -19,6 +21,7 @@ class App extends Component {
       const { books, bookSelected } = store.getState();
       this.setState({ books, bookSelected });
     });
+    store.dispatch(actions.getBooks())
     // TODO to implement the dispatch
   }
 
