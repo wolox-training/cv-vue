@@ -34,7 +34,7 @@ class App extends Component {
 
   // TODO to implement the dispatch
   addToCart = item => {
-    let [...cart] = this.state.bookSelected;
+    const [...cart] = this.state.bookSelected;
     cart.push(item);
     store.dispatch(actions.addToCart(cart))
   };
@@ -43,7 +43,11 @@ class App extends Component {
   addItem = itemId => {};
 
   // TODO to implement the dispatch
-  removeItem = itemId => {};
+  removeItem = itemId => {
+    let [...cart] = this.state.bookSelected;
+    cart = cart.filter(book =>book.id !== itemId)
+    store.dispatch(actions.removeItem(cart))
+  };
 
   CONFIGURATION_BUTTON = {
     add: {
