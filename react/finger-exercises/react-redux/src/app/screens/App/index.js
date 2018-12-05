@@ -21,14 +21,14 @@ class App extends Component {
       const { books, bookSelected, originalData } = store.getState();
       this.setState({ books, bookSelected, originalData });
     });
-    store.dispatch(actions.getBooks())
+    store.dispatch(actions.getBooks());
     // TODO to implement the dispatch
   }
 
   // TODO to implement the dispatch
   onSearch = value => {
-    let { originalData: books } = this.state; 
-    books = books.filter(book => book.name.includes(value))
+    let { originalData: books } = this.state;
+    books = books.filter(book => book.name.includes(value));
     store.dispatch(actions.searchBook(books));
   };
 
@@ -36,17 +36,24 @@ class App extends Component {
   addToCart = item => {
     const [...cart] = this.state.bookSelected;
     cart.push(item);
-    store.dispatch(actions.addToCart(cart))
+    store.dispatch(actions.addToCart(cart));
   };
 
   // TODO to implement the dispatch
-  addItem = itemId => {};
+  addItem = itemId => {
+    let [...cart] = this.state.bookSelected;
+    cart = cart.map(book => {
+      if(itemId === book.id) book.quantity++;
+      return book;
+    });
+    store.dispatch(actions.addItem(cart));
+  };
 
   // TODO to implement the dispatch
   removeItem = itemId => {
     let [...cart] = this.state.bookSelected;
-    cart = cart.filter(book =>book.id !== itemId)
-    store.dispatch(actions.removeItem(cart))
+    cart = cart.filter(book => book.id !== itemId);
+    store.dispatch(actions.removeItem(cart));
   };
 
   CONFIGURATION_BUTTON = {
