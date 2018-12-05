@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
-import store from '@redux/store';
+import { connect } from 'react-redux';
 import actions from '@redux/shopping-cart/actions';
-import { arrayOf, func } from 'prop-types';
+import { arrayOf, func, bool } from 'prop-types';
 import { bookSelectedPropType } from '@constants/propTypes';
 import Button from '@components/Button';
 
@@ -9,27 +9,8 @@ import Item from './components/Item';
 import styles from './styles.scss';
 
 class ShoppingCart extends PureComponent {
-  state = {
-    open: false
-  };
-
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(this.handleOpenState);
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  handleOpenState = () => {
-    const {
-      shoppingCart: { open }
-    } = store.getState();
-    this.setState({ open });
-  };
-
   toggleContent = () => {
-    store.dispatch(actions.toggleState());
+    this.props.dispatch(actions.toggleState());
   };
 
   total = (accumulator, currentValue) => accumulator + currentValue.quantity;
@@ -46,7 +27,7 @@ class ShoppingCart extends PureComponent {
         <Button className={styles.buttonCart} onClick={this.toggleContent}>
           <i className="fa fa-shopping-cart" />
         </Button>
-        <div className={`${styles.container} ${this.state.open ? styles.open : ''}`}>
+        <div className={`${styles.container} ${this.props.open ? styles.open : ''}`}>
           <h1 className={styles.title}>Cart</h1>
           <ul className={styles.content}>{data.map(this.renderItem)}</ul>
           <h2 className={`${styles.title} ${styles.total}`}>Total: {data.reduce(this.total, 0)}</h2>
@@ -59,7 +40,12 @@ class ShoppingCart extends PureComponent {
 ShoppingCart.propTypes = {
   data: arrayOf(bookSelectedPropType).isRequired,
   addItem: func.isRequired,
-  removeItem: func.isRequired
+  removeItem: func.isRequired,
+  open: bool
 };
 
-export default ShoppingCart;
+const mapStateToProps = ({ shoppingCart: { open } }) => ({
+  open
+});
+
+export default connect(mapStateToProps)(ShoppingCart);
