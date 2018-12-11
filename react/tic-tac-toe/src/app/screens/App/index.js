@@ -6,17 +6,18 @@ import Game from './components/Game';
 class App extends Component {
   state = {
     email: '',
-    password: ''
+    idUser: null
   }
 
   handleSubmit = (values) => {
     window.alert(JSON.stringify(values, null, 2))
   }
-  // <Login onSubmit={this.handleSubmit}/>
+  
   render() {
     return (
       <>
         <Game />
+        <Login onSubmit={this.handleSubmit}/>
       </>
     )
   }

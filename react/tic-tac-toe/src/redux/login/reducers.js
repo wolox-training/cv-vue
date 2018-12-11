@@ -1,13 +1,20 @@
-import LoginService from '../../services/LoginService';
+import { actions } from './actions';
 
-export const actions = {
-  GET_TOKEN: '@@LOGIN/GET_TOKEN',
-  LOGIN_SUCCESS: '@@LOGIN/LOGIN_SUCCESS',
-  LOGIN_FAILURE: '@@LOGIN/LOGIN_FAILURE'
-}
+const initialState = {
+  email: '',
+  idUser: null,
+  status: ''
+};
 
-const actionsCreators = {
-  getToken: () => async dispatch => {
-    const response = await LoginService.getToken() 
+function reducer(state = initialState, {type, payload}) {
+  switch (type) {
+    case actions.GET_TOKEN_SUCCESS:
+      return { ...state, };
+    case actions.GET_TOKEN_FAILURE: // TODO to implement the logic
+      return { ...state, email: payload.email, idUser: payload.idUser };
+    default:
+      return state;
   }
 }
+
+export default reducer;
