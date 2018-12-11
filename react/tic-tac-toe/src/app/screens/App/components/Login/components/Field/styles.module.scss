@@ -1,0 +1,39 @@
+@import '../../../../../../../assets/variables';
+@import '../../../../../../../assets/colors';
+
+.fieldContainer {
+  position: relative;
+  margin-top: 20px;
+  max-width: 100%;
+}
+
+.fieldInput {
+  border-width: 0;
+  border-bottom: 2px solid $grey;
+  border-radius: 0;
+  width: 100%;
+}
+
+.fieldInput:focus {
+  border-color: $blue;
+}
+
+.fieldInput.invalid {
+  border-color: red;
+}
+
+.fieldLabel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  color: $grey;
+  font-size: $text-medium;
+  transition: all 0.2s;
+}
+
+.fieldError {
+  display: block;
+  color: red;
+  font-size: $text-small;
+}
