@@ -18,8 +18,12 @@
   border-color: $blue;
 }
 
-.fieldInput.invalid {
-  border-color: red;
+.invalid .fieldInput {
+  border-color: $red;
+}
+
+.valid .fieldInput {
+  border-color: $blue;
 }
 
 .fieldLabel {
@@ -29,11 +33,17 @@
   pointer-events: none;
   color: $grey;
   font-size: $text-medium;
-  transition: all 0.2s;
+  transition: all 0.5s ease-out;
 }
 
 .fieldError {
   display: block;
-  color: red;
+  color: $red;
+  font-size: $text-small;
+}
+
+.fieldLabelVisited {
+  top: -12px;
+  color: black;
   font-size: $text-small;
 }

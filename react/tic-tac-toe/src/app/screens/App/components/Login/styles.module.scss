@@ -15,3 +15,11 @@
   color: $white;
 }
 
+.enable {
+  background-color: $blue;
+  cursor: pointer;
+}
+
+.disable {
+  cursor: no-drop;
+}

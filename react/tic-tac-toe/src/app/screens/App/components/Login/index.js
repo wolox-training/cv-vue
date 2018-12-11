@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import FormField from './components/Field';
-import { required, isMail, minLength } from '../.../../../../../../validations'
+import { required, isMail, minLength } from '../.../../../../../../validations';
+import cx from 'classnames';
+
 import styles from './styles.module.scss';
 
 class Login extends Component {
   render() {
-    const { error, pristine, invalid } = this.props;
-    console.log(error, 'lksdjkdasfklj')
+
+    const getClassName = ({valid, pristine}) => cx(styles.buttonForm, {
+      [styles.enable]: valid && !pristine,
+      [styles.disable]: !valid
+    });
+
     return (
       <form onSubmit={this.props.handleSubmit} className={styles.containerForm}>
         <Field 
@@ -27,7 +33,7 @@ class Login extends Component {
           label="Password"
           validate={[required, minLength]}
         />
-        <button type="submit" className={styles.buttonForm} disabled={pristine || invalid} >Sign In</button>
+        <button type="submit" className={getClassName(this.props)} >Login</button>
       </form>
     )
   }
