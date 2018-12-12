@@ -1,4 +1,5 @@
 import LoginService  from '../../services/LoginService';
+import api from '../../config/api'
 
 export const actions = {
   GET_TOKEN: '@@LOGIN/GET_TOKEN',
@@ -11,6 +12,7 @@ const actionsCreators = {
     const response = await LoginService.getToken(body);
     if (response.ok) {
       localStorage.setItem('token', response.data.id);
+      api.setHeader('Authorization', response.data.id)
       const dataToState = {
         idUser: response.data.userId,
         email: body.email
