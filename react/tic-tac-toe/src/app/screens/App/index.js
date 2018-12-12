@@ -11,13 +11,11 @@ class App extends Component {
   }
 
   handleSubmit = (values) => {
-    console.log(values, 'values')
     this.props.dispatch(actions.getToken(values))
   }
 
   isLogin = () => {
     const token = localStorage.getItem("token");
-    console.log(token, 'token')
     if(token)
       return <Game />
     

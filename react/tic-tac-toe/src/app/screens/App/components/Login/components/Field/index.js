@@ -14,8 +14,8 @@ const FormInput = props => {
   return (
     <>
     <div className={getClassName(meta)}>
-      <label className={meta.visited ? styles.fieldLabelVisited : styles.fieldLabel}>{label}</label>
-      <input {...input} type={type} className={styles.fieldInput}/>
+      <input {...input} type={type} className={styles.fieldInput} placeholder={label}/>
+      <label className={styles.fieldLabel}>{label}</label>
     </div>
     {(meta.error && meta.touched) && (
       <span className={styles.fieldError}>{meta.error}</span>
