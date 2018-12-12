@@ -7,21 +7,27 @@ export const actions = {
 }
 
 const actionsCreators = {
-  getToken: () => async dispatch => {
-    const response = await LoginService.getToken();
+  getToken: (body) => async dispatch => {
+    const response = await LoginService.getToken(body);
     if (response.ok) {
+      localStorage.setItem('token', response.data.id);
+      const dataToState = {
+        idUser: response.data.userId,
+        email: body.email
+      }
       dispatch({
         type: actions.GET_TOKEN_SUCCESS,
-        payload: response.data
+        payload: dataToState
       });
     } else {
+      localStorage.clear();
       dispatch({
         type: actions.GET_TOKEN_FAILURE,
         payload: response.problem
       });
     }
   },
-  requestSuccess: (response) => ({
+  deleteToken: (response) => ({
     type: actions.GET_TOKEN_SUCCESS,
     payload: response
   }),

@@ -5,7 +5,7 @@ import cx from 'classnames';
 import styles from './styles.module.scss';
 
 const FormInput = props => {
-  const { label, input, type, meta, visited } = props;
+  const { label, input, type, meta } = props;
   const getClassName = (meta) => cx(styles.fieldContainer, {
     [styles.invalid]: meta.touched && meta.invalid,
     [styles.valid]: meta.touched && meta.valid

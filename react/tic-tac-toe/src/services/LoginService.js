@@ -1,5 +1,7 @@
 import api from '../config/api';
 
 export default {
-  getToken: () => api.get('/user'),
+  getToken: (body, headers) => {
+    return api.post('/api/users/login', body, {headers : {'Content-Type': 'application/json'}})
+  }
 };

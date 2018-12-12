@@ -12,29 +12,40 @@ class Login extends Component {
 
     const getClassName = ({valid, pristine}) => cx(styles.buttonForm, {
       [styles.enable]: valid && !pristine,
-      [styles.disable]: !valid
+      [styles.disable]: !valid,
+      [styles.error]: this.props.status === 'CLIENT_ERROR'
     });
 
+    const getMessage = () => {
+      if(this.props.status === 'CLIENT_ERROR')
+        return 'email or password are wrong, please check them'
+
+      return ''
+    }
+
     return (
-      <form onSubmit={this.props.handleSubmit} className={styles.containerForm}>
-        <Field 
-          name="email" 
-          component={FormField} 
-          type="text" 
-          className={styles.fieldInput} 
-          label="Email"
-          validate={[required,isMail]} 
-        />
-        <Field 
-          name="password" 
-          component={FormField} 
-          type="password" 
-          className={styles.fieldInput} 
-          label="Password"
-          validate={[required, minLength]}
-        />
-        <button type="submit" className={getClassName(this.props)} >Login</button>
-      </form>
+      <div className={styles.containerForm}>
+        <form onSubmit={this.props.handleSubmit}>
+          <Field 
+            name="email" 
+            component={FormField} 
+            type="text" 
+            className={styles.fieldInput} 
+            label="Email"
+            validate={[required,isMail]} 
+          />
+          <Field 
+            name="password" 
+            component={FormField} 
+            type="password" 
+            className={styles.fieldInput} 
+            label="Password"
+            validate={[required, minLength]}
+          />
+          <button type="submit" className={getClassName(this.props)} >Login</button>
+        </form>
+        <span className={styles.formStatus} >{getMessage()}</span>
+      </ div>
     )
   }
 }
@@ -43,8 +54,8 @@ Login = reduxForm({
   form: 'login',
 })(Login);
 
-const mapStateToProps = ({ login: { open } }) => ({
-  open
+const mapStateToProps = ({user :{ status }}) => ({
+  status
 });
 
-export default Login;
+export default connect(mapStateToProps)(Login);
