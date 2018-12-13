@@ -1,13 +1,15 @@
 import React from 'react';
 import App from '../app/screens/App'
-
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import Login from '../app/screens/App/components/Login'
+import { BrowserRouter as Router, Route, history} from 'react-router-dom'
 
 const RoutesApp = () => {
   return (
-    <Router>
-      <Route path="/" component={App} />
+    <Router forceRefresh={false}>
+      <div>
+        <Route exact path="/" component={App} />
+        <Route path="/login" component={Login} />
+      </div>
     </Router>
   )
 }

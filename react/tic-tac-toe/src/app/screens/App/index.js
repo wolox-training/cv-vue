@@ -1,34 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Login from './components/Login';
+import { Redirect } from 'react-router-dom';
+
 import Game from './components/Game';
-import actions from '../../../redux/login/actions';
+import { tokenExist } from './utils';
 
 class App extends Component {
-  handleSubmit = (values) => {
-    this.props.dispatch(actions.getToken(values))
-  }
 
-  isLogin = () => {
-    const token = localStorage.getItem("token");
-    if(token)
-      return <Game />
-    
-    return <Login onSubmit={this.handleSubmit}/>
+  componentDidMount() {
+    tokenExist(this.props)
   }
 
   render() {
     return (
       <>
-        {this.isLogin()}
+        {this.props.isLogged ? <Game /> : <Redirect to="/login"/>}
       </>
     )
   }
 }
 
-const mapStateToProps = ({ user: { email, idUser } }) => ({
+const mapStateToProps = ({ user: { email, idUser }, general :{ isLogged } }) => ({
   email,
-  idUser
+  idUser, 
+  isLogged
 });
 
 export default connect(mapStateToProps)(App);

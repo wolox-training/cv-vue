@@ -1,5 +1,6 @@
 import LoginService  from '../../services/LoginService';
 import api from '../../config/api'
+import actionsGeneral from '../general/actions';
 
 export const actions = {
   GET_TOKEN: '@@LOGIN/GET_TOKEN',
@@ -28,6 +29,7 @@ const actionsCreators = {
         payload: response.problem
       });
     }
+    dispatch(actionsGeneral.changeStatus(!!response.ok))
   },
   deleteToken: (response) => ({
     type: actions.GET_TOKEN_SUCCESS,
