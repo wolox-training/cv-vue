@@ -2,18 +2,18 @@
 
 .square {
   background: $whiteGrey;
-  border: 1px solid $greenBlue;
+  border: 0.3vw solid $greenBlue;
   color: $brown;
   float: left;
-  font-size: 5rem;
+  font-size: 10vw;
   font-weight: bold;
-  line-height: 6rem;
-  height: 6rem;
+  line-height: 10vw;
+  height: 10vw;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 6rem;
+  width: 50%;
 }
 
 .square:focus {

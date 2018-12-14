@@ -2,10 +2,9 @@
 @import '../../../../../assets/variables';
 
 .game {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 6rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin-top: 1rem;
 }
 
 .gameInfo {

@@ -1,7 +1,6 @@
-.boardRow::after {
-  clear: both;
-  content: "";
-  display: table;
+.boardRow {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .status {
