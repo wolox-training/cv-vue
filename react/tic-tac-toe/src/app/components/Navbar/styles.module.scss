@@ -1,0 +1,43 @@
+@import '../../../assets/colors';
+
+.navbarContainer {
+  box-shadow: -18px -1px 16px #545454;
+  height: 6rem;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: $greenBlue;
+}
+
+.navbarIcon {
+  background-color: inherit;
+  color: $whiteGrey;
+  font-size: 4.5rem;
+  animation-duration: 4s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+.navbarItem {
+  color: #f2ebd3;
+  text-transform: uppercase;
+  font-size: 2rem;
+  transition: all 0.2s;
+  
+  &:hover {
+    color: #545454;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes slidein {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}

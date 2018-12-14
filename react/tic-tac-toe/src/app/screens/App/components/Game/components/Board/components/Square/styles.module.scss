@@ -1,16 +1,19 @@
+@import '../../../../../../../../../assets/colors';
+
 .square {
-  background: #fff;
-  border: 1px solid #999;
+  background: $greenBlue;
+  border: 1px solid $brown;
+  color: $brown;
   float: left;
-  font-size: 44px;
+  font-size: 5rem;
   font-weight: bold;
-  line-height: 50px;
-  height: 50px;
+  line-height: 6rem;
+  height: 6rem;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 50px;
+  width: 6rem;
 }
 
 .square:focus {

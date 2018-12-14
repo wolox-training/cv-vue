@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
-import Game from './components/Game';
+import Routes from 'app/components/Routes';
 import { tokenExist } from './utils';
 
 class App extends Component {
@@ -14,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <>
-        {this.props.isLogged ? <Game /> : <Redirect to="/login"/>}
+        <Routes />
       </>
     )
   }
