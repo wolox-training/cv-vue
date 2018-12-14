@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Redirect, Route } from 'react-router-dom';
-import CustomRoute from 'app/components/CustomRoute'
 import Board from './components/Board';
 import actions from '../../../../../redux/game/actions';
 import styles from './styles.module.scss';
@@ -68,27 +66,21 @@ class Game extends Component {
     else 
       status = 'Next player: ' + (this.props.xIsNext ? 'X' : 'O');
 
+    console.log('on game')
     return (
       <>
-        <Switch>
-          <Route exact path="/game" render={() => {
-            console.log('En game')
-            return <div className={styles.game}>
-              <div className={styles.gameBoard}>
-                <Board 
-                  squares={current.squares}
-                  onClick={this.handleClick}
-                />
-              </div>
-              <div className={styles.gameInfo}>
-                <div className={styles.gameStatus}>{status}</div>
-                <ol>{this.movesMapping(history)}</ol>
-              </div>
-            </div>
-          }} />
-          <Route exact path="/settings" render={() => <div>Settings</div>} />
-          <Redirect to="/game" />
-        </Switch>
+        <div className={styles.game}>
+          <div className={styles.gameBoard}>
+            <Board 
+              squares={current.squares}
+              onClick={this.handleClick}
+            />
+          </div>
+          <div className={styles.gameInfo}>
+            <div className={styles.gameStatus}>{status}</div>
+            <ol>{this.movesMapping(history)}</ol>
+          </div>
+        </div>
       </>
     );
   }

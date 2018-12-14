@@ -20,7 +20,7 @@ class Login extends Component {
   render() {
     return (
       <>
-        {this.props.isLogged ? <Redirect to="/"/> : <LoginForm onSubmit={this.handleSubmit} />}
+        <LoginForm onSubmit={this.handleSubmit} />
       </>
     )
   }
