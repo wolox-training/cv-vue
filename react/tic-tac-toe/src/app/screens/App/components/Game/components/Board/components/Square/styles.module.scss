@@ -8,14 +8,26 @@
   font-size: 10vw;
   font-weight: bold;
   line-height: 10vw;
-  height: 10vw;
+  height: 12vw;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 50%;
+  width: 35%;
 }
 
 .square:focus {
   outline: none;
+}
+
+.squareSecondColor {
+  color: $greenGrey;
+}
+
+@media screen and (max-width: 840px) {
+  .square {
+    font-size: 20vw;
+    line-height: 20vw;
+    height: 20vw;
+  }
 }

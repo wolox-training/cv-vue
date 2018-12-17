@@ -15,3 +15,9 @@
 .gameButton:hover{
   color: $blue
 }
+
+@media screen and (max-width: 840px) {
+  .game {
+    grid-template-columns: 1fr;
+  }
+}
