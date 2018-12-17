@@ -1,5 +1,5 @@
-import LoginService  from '../../services/LoginService';
-import api from '../../config/api'
+import LoginService  from 'services/LoginService';
+import api from 'config/api'
 
 export const actions = {
   GET_TOKEN: '@@LOGIN/GET_TOKEN',

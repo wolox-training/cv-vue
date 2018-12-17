@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Board from './components/Board';
-import actions from '../../../../../redux/game/actions';
+import actions from 'redux/game/actions';
 import styles from './styles.module.scss';
-import { calculateWinner } from '../../../../../utils/utils';
+import { calculateWinner } from 'utils/utils';
 
 class Game extends Component {
   state = {
@@ -56,8 +56,9 @@ class Game extends Component {
   }
   
   render() {
-    const history = this.props.history;
-    const current = history[this.props.stepNumber];
+    
+    const { history, stepNumber } = this.props;
+    const current = history[stepNumber];
     const winner = calculateWinner(current.squares);
 
     let status;
