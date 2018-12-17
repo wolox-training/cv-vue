@@ -1,0 +1,16 @@
+@import 'scss/_colors.scss';
+@import 'scss/_variables.scss';
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.gameInfo {
+  margin-left: 20px;
+}
+
+.gameStatus,
+.gameButton:hover{
+  color: $blue
+}

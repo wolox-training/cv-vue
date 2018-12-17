@@ -1,0 +1,61 @@
+@import 'scss/_variables.scss';
+@import 'scss/_colors.scss';
+
+.fieldContainer {
+  margin-top: 20px;
+
+  &.invalid {
+    .fieldInput {
+      border-color: $red;
+    }
+    .fieldLabel {
+      color: $red
+    }
+  }
+
+  &.valid {
+    .fieldInput {
+      border-color: $blue;
+    }
+    .fieldLabel {
+      color: $blue
+    }
+  }
+}
+
+.fieldError {
+  color: $red;
+  display: block;
+  font-size: $text-small;
+  transform: translateY(-15px);
+}
+
+.fieldLabel {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  transform: translate(-60px, -37px) scale(0.7);
+  transition: transform 0.3s;
+}
+
+.fieldInput {
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid $grey;;
+  color: $grey;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  padding: 2px 5px;
+  transition: all 0.3s;
+  width: 100%;
+
+  &:focus {
+    border-color: $blue;
+  }
+}
+
+.fieldInput:placeholder-shown + .fieldLabel {
+  opacity: 0;
+  transform: translate(0, 30px);
+  visibility: hidden;
+}
