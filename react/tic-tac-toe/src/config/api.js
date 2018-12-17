@@ -1,9 +1,7 @@
 import { create } from 'apisauce';
 
 const api = create({
-  /* No toma el valor de API_BASE_URL */
-  // baseURL: process.env.API_BASE_URL,
-  baseURL: 'http://localhost:3000',
+  baseURL: process.env.REACT_APP_API_BASE_URL,
   timeout: 5000
 });
 

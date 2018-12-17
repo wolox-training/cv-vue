@@ -1,16 +1,16 @@
 import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
-import Game from './game/reducers';
-import Login from './login/reducers';
-import General from './general/reducers'
+import game from './game/reducers';
+import login from './login/reducers';
+import general from './general/reducers'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-underscore-dangle
 const Enhancers = [applyMiddleware(thunk)];
 const reducers = {
-  user: Login,
-  game: Game,
-  general: General,
+  user: login,
+  game: game,
+  general: general,
   form: formReducer,
 }
 

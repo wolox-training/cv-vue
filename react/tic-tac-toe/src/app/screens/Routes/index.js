@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CustomRoute from 'app/components/CustomRoute'
 import App from 'app/screens/App'
-import Login from 'app/screens/App/components/Login';
+import Login from 'app/screens/App/screens/Login';
 import { tokenExist } from '../App/utils';
 
 class Routes extends Component {

@@ -1,8 +1,7 @@
-@import './assets/equalizer.scss';
-@import './assets//colors';
+@import './scss/equalizer.scss';
+@import './scss/_colors.scss';
 
 body {
-  // font: 14px "Roboto", serif;
   font-family: 'Roboto', serif;
   background-color: $whiteGrey;
 }

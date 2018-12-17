@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import FormField from '../Field';
-import { required, isMail, minLength } from '../../../../../../../validations';
+import { required, isMail, minLength } from 'validations';
 import cx from 'classnames';
 
 import styles from './styles.module.scss';

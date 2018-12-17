@@ -1,10 +1,10 @@
-@import '../../../../../assets/colors';
-@import '../../../../../assets/variables';
+@import 'scss/_colors.scss';
+@import 'scss/_variables.scss';
 
 .game {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  margin-top: 1rem;
+  margin-top: 15px;
 }
 
 .gameInfo {

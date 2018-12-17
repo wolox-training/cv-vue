@@ -1,5 +1,5 @@
-import LoginService  from '../../services/LoginService';
-import api from '../../config/api'
+import LoginService  from 'services/LoginService';
+import api from 'config/api'
 import actionsGeneral from '../general/actions';
 
 export const actions = {
