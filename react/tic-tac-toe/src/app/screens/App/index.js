@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Login from './components/Login';
+import Login from './screens/Login';
 import Game from './components/Game';
-import actions from '../../../redux/login/actions';
+import actions from 'redux/login/actions';
 
 class App extends Component {
   handleSubmit = (values) => {
