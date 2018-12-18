@@ -1,7 +1,8 @@
 @import 'scss/_colors.scss';
+@import 'scss/_variables.scss';
 
 .navbarContainer {
-  box-shadow: -18px -1px 16px #545454;
+  box-shadow: -18px -1px 16px $grey;
   height: 100px;
   max-width: 100%;
   display: flex;
@@ -30,7 +31,7 @@
   }
 }
 
-@media screen and (max-width: 840px){
+@media screen and (max-width: $responsive-size){
   .navbarContainer {
     align-items: start;
     color: $whiteGrey;
