@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -33,5 +34,11 @@ const mapStateToProps = ({ user: { email, idUser }, general :{ isLogged } }) => 
   idUser, 
   isLogged
 });
+
+App.propTypes = {
+  email: PropTypes.string,
+  idUser: PropTypes.number,
+  isLogged: PropTypes.bool
+}
 
 export default connect(mapStateToProps)(App);

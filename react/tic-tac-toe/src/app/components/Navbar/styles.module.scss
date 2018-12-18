@@ -2,7 +2,7 @@
 
 .navbarContainer {
   box-shadow: -18px -1px 16px #545454;
-  height: 6rem;
+  height: 100px;
   max-width: 100%;
   display: flex;
   align-items: center;
@@ -13,31 +13,29 @@
 .navbarIcon {
   background-color: inherit;
   color: $whiteGrey;
-  font-size: 4.5rem;
+  font-size: 70px;
   animation-duration: 4s;
-  animation-name: slidein;
+  animation-name: rotateIcon;
   animation-iteration-count: infinite;
   animation-direction: normal;
 }
 
-.navbarItem {
-  color: #f2ebd3;
-  text-transform: uppercase;
-  font-size: 2rem;
-  transition: all 0.2s;
-  
-  &:hover {
-    color: #545454;
-    transform: scale(1.2);
-  }
-}
-
-@keyframes slidein {
+@keyframes rotateIcon {
   from {
     transform: rotate(0deg);
   }
 
   to {
     transform: rotate(360deg)
+  }
+}
+
+@media screen and (max-width: 840px){
+  .navbarContainer {
+    align-items: start;
+    color: $whiteGrey;
+    flex-direction: column;
+    height: 350px;
+    padding-left: 30px;
   }
 }

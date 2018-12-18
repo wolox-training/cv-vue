@@ -1,24 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 function CustomRoute ({isPrivate, auth, path, component: Component, exact}) {
-  console.log({isPrivate, auth, path, Component}, 'values')
-    // if (!auth && isPrivate) {
-    //   return <Redirect to='/login' />;
-    // }
-    // return <Component {...props} />
-    if (isPrivate && auth){
+    if (isPrivate && auth)
       return <Route exact={!!exact} path={path} component={Component} />
-    }
-    else if (isPrivate && !auth) {
-      console.log('Second')
+    else if (isPrivate && !auth)
       return <Redirect to="/login" />
-    }
     else if(!isPrivate && !auth)
-    return  <Route path={path} component={Component} />
+      return  <Route path={path} component={Component} />
     
-      console.log('Third')
     return <Redirect to="/" />
+}
+
+CustomRoute.propTypes = {
+  isPrivate: PropTypes.bool,
+  auth: PropTypes.bool,
+  path: PropTypes.string,
+  component: PropTypes.object,
+  exact: PropTypes.bool
 }
 
 export default CustomRoute;

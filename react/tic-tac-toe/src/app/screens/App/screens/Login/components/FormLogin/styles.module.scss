@@ -9,14 +9,14 @@
 .buttonForm {
   background-color: $grey;
   border-radius: 5px;
-  color: $white;
-  height: 25px;
+  color: $whiteGrey;
+  height: 40px;
   margin-top: 10px;
   width: 100%;
 }
 
 .enable {
-  background-color: $blue;
+  background-color: $greenBlue;
   cursor: pointer;
 }
 
@@ -31,6 +31,6 @@
 .formStatus {
   color: $red;
   display: block;
+  font-size: 12px;
   text-align: center;
-  font-size: 12PX;
 }

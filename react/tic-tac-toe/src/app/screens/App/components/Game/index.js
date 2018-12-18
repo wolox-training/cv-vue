@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Board from './components/Board';
 import actions from 'redux/game/actions';
@@ -6,15 +7,7 @@ import styles from './styles.module.scss';
 import { calculateWinner } from 'utils/utils';
 
 
-class Game extends Component {
-  state = {
-    history: [{
-      squares: Array(9).fill(null)
-    }],
-    stepNumber: 0,
-    xIsNext: true
-  };
-  
+class Game extends Component {  
   handleClick = (i) => {
     const history = this.props.history.slice(0, this.props.stepNumber + 1);
     const current = history[history.length - 1];
@@ -67,7 +60,6 @@ class Game extends Component {
     else 
       status = 'Next player: ' + (this.props.xIsNext ? 'X' : 'O');
 
-    console.log('on game')
     return (
       <>
         <div className={styles.game}>
@@ -92,5 +84,11 @@ const mapStateToProps = ({ game: { history, stepNumber, xIsNext } }) => ({
   stepNumber,
   xIsNext
 });
+
+Game.propTypes = {
+  history: PropTypes.array,
+  stepNumber: PropTypes.number,
+  xIsNext: PropTypes.bool
+}
 
 export default connect(mapStateToProps)(Game);

@@ -1,15 +1,7 @@
-import React, {Component} from 'react';
-
-// class Result extends Component {
-//   render(){
-//     return (
-
-//     )
-//   }
-// }
+import React from 'react';
 
 function Result (props) {
-  return <h1>Results</h1>
+  return <h1>Comming Soon</h1>
 }
 
 export default Result;

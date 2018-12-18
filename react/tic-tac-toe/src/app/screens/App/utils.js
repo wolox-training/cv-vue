@@ -1,5 +1,5 @@
-import api from '../../../config/api';
-import actionsGeneral from '../../../redux/general/actions';
+import api from 'config/api';
+import actionsGeneral from 'redux/general/actions';
 
 export const tokenExist = ({dispatch}) => {
   const token = localStorage.getItem("token");
