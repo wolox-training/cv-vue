@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CustomRow from '../CustomRow';
 import styles from './styles.module.scss';
 
@@ -21,5 +22,10 @@ function CustomTable ({title, data}) {
     </>
   )
 }
+
+CustomTable.propTypes = {
+  title: PropTypes.arr,
+  data: PropTypes.arr
+};
 
 export default CustomTable;

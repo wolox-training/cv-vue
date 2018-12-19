@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import actions from 'redux/results/actions';
 import CustomTable from './components/CustomTable';
 import Button from './components/Botton';
@@ -15,7 +16,6 @@ class Result extends Component {
   }
 
   render(){
-    console.log(this.props, 'here are props')
     return (
       <>  
         <Button className={styles.backButton} icon="fas fa-arrow-alt-circle-left" onClick={this.handleOnClick} />
@@ -39,5 +39,9 @@ class Result extends Component {
 const mapStateToProps = ({ results: { positions }}) => ({
   positions
 });
+
+Result.propTypes = { 
+  positions: PropTypes.array
+}
 
 export default connect(mapStateToProps)(Result);

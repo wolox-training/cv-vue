@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
 function CustomButton (props) {
@@ -8,5 +9,10 @@ function CustomButton (props) {
       <i className={props.icon}></i>
     </button>
 }
+
+CustomButton.propTypes = {
+  onClick: PropTypes.func,
+  icon: PropTypes.string
+};
 
 export default CustomButton;
