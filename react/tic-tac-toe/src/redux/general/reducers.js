@@ -1,18 +1,15 @@
 import { actions } from './actions';
+import {createReducer } from 'redux-recompose';
 
-const initialStates = {
+const initialState = {
   isLogged : false
 };
 
-function reducer(state = initialStates, action) {
-  switch (action.type) {
-    case actions.GET_STATUS:
-      return { ...state}
-    case actions.CHANGE_STATUS:
-      return { ...state, isLogged: action.payload }
-    default :
-      return state;
-  }
-}
+const reducerDescription = {
+  [actions.CHANGE_STATUS]: (state, action) => ({
+    ...state,
+    isLogged: action.payload,
+  })
+};
 
-export default reducer;
+export default createReducer(initialState, reducerDescription);

@@ -8,8 +8,20 @@ export const actions = {
   GET_TOKEN_FAILURE: '@@LOGIN/GET_TOKEN_FAILURE'
 }
 
+const privateActionCreators = {
+  getTokenSuccess: values => ({
+    type: actions.GET_TOKEN_SUCCESS,
+    payload: values
+  }),
+  getTokenError: error => ({
+    type: actions.GET_TOKEN_SUCCESS,
+    payload: error
+  })
+};
+
 const actionsCreators = {
   getToken: (body) => async dispatch => {
+    dispatch({ type: actions.GET_TOKEN });
     const response = await LoginService.getToken(body);
     if (response.ok) {
       localStorage.setItem('token', response.data.id);
@@ -18,16 +30,10 @@ const actionsCreators = {
         idUser: response.data.userId,
         email: body.email
       }
-      dispatch({
-        type: actions.GET_TOKEN_SUCCESS,
-        payload: dataToState
-      });
+      dispatch(privateActionCreators.getTokenSuccess(dataToState))
     } else {
       localStorage.clear();
-      dispatch({
-        type: actions.GET_TOKEN_FAILURE,
-        payload: response.problem
-      });
+      dispatch(privateActionCreators.getTokenError(response.problem));
     }
     dispatch(actionsGeneral.changeStatus(!!response.ok))
   },
