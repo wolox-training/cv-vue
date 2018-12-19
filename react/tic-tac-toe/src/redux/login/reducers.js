@@ -1,6 +1,6 @@
 import { actions } from './actions';
-import {createReducer } from 'redux-recompose';
-
+import { createReducer, completeReducer } from 'redux-recompose';
+import { onLoading } from '../utils';
 const initialState = {
   tokenLoading: false,
   email: '',
@@ -9,7 +9,7 @@ const initialState = {
 };
 
 const reducerDescription = {
-  [actions.GET_TOKEN]: (state) => ({ ...state, tokenLoading: true }),
+  [actions.GET_TOKEN]: onLoading(),
   [actions.GET_TOKEN_SUCCESS]: (state, action) => ({
     ...state,
     tokenLoading: false,
@@ -19,11 +19,18 @@ const reducerDescription = {
   }),
   [actions.GET_TOKEN_FAILURE]: (state, action) => ({
     ...state,
-    matchesLoading: false,
+    tokenLoading: false,
     status: action.payload,
     email: '',
     idUser: null
   })
 };
 
+// const reducerDescription = {
+//   primaryActions: [actions.GET_TOKEN],
+//   // override: {
+//   //   [actions.INCREMENT_COUNTER]: onAdd()
+//   // }
+// }
+// export default createReducer(initialState, completeReducer(reducerDescription))
 export default createReducer(initialState, reducerDescription);

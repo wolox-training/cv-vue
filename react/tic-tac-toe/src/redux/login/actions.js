@@ -8,6 +8,8 @@ export const actions = {
   GET_TOKEN_FAILURE: '@@LOGIN/GET_TOKEN_FAILURE'
 }
 
+// export const actions = createTypes(completeTypes['GET_MATCHES','GET_PITCHES'], '@SOCCER');
+
 const privateActionCreators = {
   getTokenSuccess: values => ({
     type: actions.GET_TOKEN_SUCCESS,
@@ -21,7 +23,10 @@ const privateActionCreators = {
 
 const actionsCreators = {
   getToken: (body) => async dispatch => {
-    dispatch({ type: actions.GET_TOKEN });
+    dispatch({ 
+      type: actions.GET_TOKEN,
+      target: 'token'
+     });
     const response = await LoginService.getToken(body);
     if (response.ok) {
       localStorage.setItem('token', response.data.id);

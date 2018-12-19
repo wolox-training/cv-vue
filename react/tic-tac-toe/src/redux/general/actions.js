@@ -5,7 +5,8 @@ export const actions = {
 const actionsCreators = {
   changeStatus: (value) => ({
     type: actions.CHANGE_STATUS,
-    payload: value
+    payload: value,
+    target: 'isLogged'
   })
 };
 
