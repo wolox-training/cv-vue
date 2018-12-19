@@ -1,6 +1,8 @@
 import { actions } from './actions';
-import { createReducer, completeReducer } from 'redux-recompose';
+import { createReducer } from 'redux-recompose';
 import { onLoading } from '../utils';
+
+// TODO : used completeState is not necessary on this because token is not stage on state
 const initialState = {
   tokenLoading: false,
   email: '',
@@ -26,11 +28,4 @@ const reducerDescription = {
   })
 };
 
-// const reducerDescription = {
-//   primaryActions: [actions.GET_TOKEN],
-//   // override: {
-//   //   [actions.INCREMENT_COUNTER]: onAdd()
-//   // }
-// }
-// export default createReducer(initialState, completeReducer(reducerDescription))
 export default createReducer(initialState, reducerDescription);

@@ -1,6 +1,7 @@
 import { actions } from './actions';
-import {createReducer } from 'redux-recompose';
+import { createReducer } from 'redux-recompose';
 
+// TODO : used completeState is not necessary on this because the tree states have not Loading and Error state
 const initialState = {
   history: [{
     squares: Array(9).fill(null)
