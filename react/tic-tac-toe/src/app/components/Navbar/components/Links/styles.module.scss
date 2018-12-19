@@ -1,0 +1,60 @@
+@import 'scss/_colors.scss';
+@import 'scss/_variables.scss';
+
+.container {
+  border: 0;
+  color: $whiteGrey;
+  font-size: 22px;
+  padding: 5px; 
+  transition: transform 0.2s;
+
+  &:hover {
+    color: $brown;
+    border: 1px solid $brown;
+    border-radius: 5px;
+    transform: scale(1.2);
+  }
+}
+
+.link {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  font-size: inherit;
+  margin-left: 5px;
+  text-transform: uppercase;
+  
+  &:hover {
+    color: $brown;
+  }
+
+  &:focus {
+    color: $brown;
+  }
+}
+
+.icon {
+  color: inherit;
+  font-size: 40px;
+  margin-right: 7px
+}
+
+@media screen and (max-width: $responsive-size) {
+  .container {
+    width: 100%;
+
+    &:hover {
+      color: $brown;
+      transform: scale(1.05);
+    }
+  }
+  
+  .link {
+    font-size: 18px;
+    margin-left: 20px;
+  }
+
+  .icon {
+    font-size: 30px;
+  }
+}

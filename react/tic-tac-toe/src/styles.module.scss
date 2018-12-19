@@ -1,8 +1,10 @@
 @import './scss/equalizer.scss';
+@import './scss/_colors.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+  font-family: 'Roboto', serif;
+  background-color: $whiteGrey;
 }
 
 ol, ul {

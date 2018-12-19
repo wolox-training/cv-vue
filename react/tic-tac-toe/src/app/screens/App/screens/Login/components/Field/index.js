@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import cx from 'classnames';
+import PropTypes from 'prop-types';
 
 import styles from './styles.module.scss';
 
@@ -23,5 +23,12 @@ const FormInput = props => {
     </>
   )
 }
+
+FormInput.propTypes = {
+  label: PropTypes.string,
+  input: PropTypes.object,
+  type: PropTypes.string,
+  meta: PropTypes.object
+};
 
 export default FormInput;

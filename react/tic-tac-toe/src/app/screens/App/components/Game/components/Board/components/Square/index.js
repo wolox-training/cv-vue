@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import styles from './styles.module.scss';
 
 function Square(props) {
   return (
     <button 
-      className={styles.square} 
+      className={cx(styles.square, {[styles.squareSecondColor]: props.value!== 'X'})}
       onClick={() => props.onClick(props.id)}
     >
       {props.value}

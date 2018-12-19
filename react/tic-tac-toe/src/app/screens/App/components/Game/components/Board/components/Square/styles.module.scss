@@ -1,18 +1,34 @@
+@import 'scss/_colors.scss';
+@import 'scss/_variables.scss';
+
 .square {
-  background: #fff;
-  border: 1px solid #999;
+  background: $whiteGrey;
+  border: 0.3vw solid $greenBlue;
+  color: $brown;
   float: left;
-  font-size: 44px;
+  font-size: 10vw;
   font-weight: bold;
-  line-height: 50px;
-  height: 50px;
+  height: 12vw;
+  line-height: 10vw;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 50px;
+  width: 35%;
 }
 
 .square:focus {
   outline: none;
+}
+
+.squareSecondColor {
+  color: $greenGrey;
+}
+
+@media screen and (max-width: $responsive-size) {
+  .square {
+    font-size: 20vw;
+    height: 20vw;
+    line-height: 16vw;
+  }
 }

@@ -1,0 +1,42 @@
+@import 'scss/_colors.scss';
+@import 'scss/_variables.scss';
+
+.navbarContainer {
+  align-items: center;
+  background-color: $greenBlue;
+  box-shadow: -18px -1px 16px $grey;
+  display: flex;
+  height: 100px;
+  justify-content: space-around;
+  max-width: 100%;
+}
+
+.navbarIcon {
+  animation-direction: normal;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: rotateIcon;
+  background-color: inherit;
+  color: $whiteGrey;
+  font-size: 70px;
+}
+
+@keyframes rotateIcon {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+@media screen and (max-width: $responsive-size){
+  .navbarContainer {
+    align-items: start;
+    color: $whiteGrey;
+    flex-direction: column;
+    height: 350px;
+    padding-left: 30px;
+  }
+}

@@ -2,15 +2,46 @@
 @import 'scss/_variables.scss';
 
 .game {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin-top: 35px;
 }
 
 .gameInfo {
+  justify-content: center;
   margin-left: 20px;
 }
 
 .gameStatus,
 .gameButton:hover{
-  color: $blue
+  color: $greenBlue
+}
+
+.gameStatus {
+  font-size: $text-very-big;
+  width: 100%;
+}
+
+.gameButton {
+  border-bottom: 2px solid $brown;
+  font-size: $text-big;
+  margin: 2px;
+}
+
+@media screen and (max-width: $responsive-size) {
+  .game {
+    grid-template-columns: 1fr;
+  }
+
+  .gameInfo {
+    margin-top: 40px;
+  }
+
+  .gameStatus {
+    font-size: $text-big;
+  }
+
+  .gameButton {
+    font-size: $text-medium;
+  }
 }
