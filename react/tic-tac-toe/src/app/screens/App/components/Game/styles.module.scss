@@ -27,7 +27,7 @@
   margin: 2px;
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: $responsive-size) {
   .game {
     grid-template-columns: 1fr;
   }

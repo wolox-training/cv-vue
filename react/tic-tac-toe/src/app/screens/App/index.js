@@ -10,6 +10,13 @@ import Result from './components/Results'
 
 import { tokenExist } from 'app/screens/App/utils';
 class App extends Component {
+  
+  removeAndRedirect = () => {
+    localStorage.removeItem('token');
+    tokenExist(this.props);
+    return <Redirect to="login" />
+  }
+
   render() {
     return (
       <>
@@ -17,11 +24,7 @@ class App extends Component {
         <Switch>
           <CustomRoute exact path="/game" component={Game} isPrivate auth={this.props.isLogged} />
           <CustomRoute exact path="/result" component={Result} isPrivate auth={this.props.isLogged} />
-          <Route exact path="/logout" render={() => {
-            localStorage.removeItem('token');
-            tokenExist(this.props);
-            return <Redirect to="login" />
-          }} isPrivate auth={this.props.isLogged} />
+          <Route exact path="/logout" render={this.removeAndRedirect} isPrivate auth={this.props.isLogged} />
           <Redirect to="/game" />
         </Switch>
       </>

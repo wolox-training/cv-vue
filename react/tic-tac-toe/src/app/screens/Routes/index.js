@@ -16,8 +16,8 @@ class Routes extends Component {
       <Router>
         <>
         <Switch>
-          <CustomRoute path="/login" exact component={Login} auth={this.props.isLogged}/>
-          <CustomRoute path="/" component={App} isPrivate auth={this.props.isLogged}/>
+          <CustomRoute path="/login" exact={true} component={Login} auth={this.props.isLogged}/>
+          <CustomRoute path="/" exact={false} component={App} isPrivate auth={this.props.isLogged}/>
           <Redirect to="/" />
         </Switch>
         </>

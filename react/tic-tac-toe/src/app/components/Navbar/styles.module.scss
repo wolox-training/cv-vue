@@ -1,24 +1,25 @@
 @import 'scss/_colors.scss';
+@import 'scss/_variables.scss';
 
 .navbarContainer {
-  box-shadow: -18px -1px 16px #545454;
-  height: 100px;
-  max-width: 100%;
-  display: flex;
   align-items: center;
-  justify-content: space-around;
   background-color: $greenBlue;
-  margin-bottom: 35px
+  box-shadow: -18px -1px 16px $grey;
+  display: flex;
+  height: 100px;
+  justify-content: space-around;
+  margin-bottom: 35px;
+  max-width: 100%;
 }
 
 .navbarIcon {
+  animation-direction: normal;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: rotateIcon;
   background-color: inherit;
   color: $whiteGrey;
   font-size: 70px;
-  animation-duration: 4s;
-  animation-name: rotateIcon;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
 }
 
 @keyframes rotateIcon {
@@ -31,7 +32,7 @@
   }
 }
 
-@media screen and (max-width: 840px){
+@media screen and (max-width: $responsive-size){
   .navbarContainer {
     align-items: start;
     color: $whiteGrey;

@@ -20,7 +20,7 @@ export const DATA = [
   {
     id: 3,
     points: 300,
-    name: 'Sara Santamaria',
+    name: 'Jimmy Romeo',
     pg: 54,
     wg: 27,
     lg: 12,
