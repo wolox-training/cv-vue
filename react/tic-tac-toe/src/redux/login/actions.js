@@ -1,14 +1,9 @@
 import LoginService  from 'services/LoginService';
 import api from 'config/api'
+import { createTypes, completeTypes } from 'redux-recompose';
 import actionsGeneral from '../general/actions';
 
-export const actions = {
-  GET_TOKEN: '@@LOGIN/GET_TOKEN',
-  GET_TOKEN_SUCCESS: '@@LOGIN/GET_TOKEN_SUCCESS',
-  GET_TOKEN_FAILURE: '@@LOGIN/GET_TOKEN_FAILURE'
-}
-
-// export const actions = createTypes(completeTypes['GET_MATCHES','GET_PITCHES'], '@SOCCER');
+export const actions = createTypes(completeTypes(['GET_TOKEN']), '@@LOGIN');
 
 const privateActionCreators = {
   getTokenSuccess: values => ({
