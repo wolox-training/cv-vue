@@ -18,7 +18,6 @@ const privateActionCreators = {
 
 const actionsCreators = {
   getToken: (body) => {
-    console.log('Hrtr');
     return {
       type: actions.GET_TOKEN,
       target: 'token',
@@ -26,7 +25,6 @@ const actionsCreators = {
       payload: body,
       injections: [
         withPostSuccess((dispatch, response) => {
-          console.log(response);
           localStorage.setItem('token', response.data.id);
           api.setHeader('Authorization', response.data.id)
           const dataToState = {
@@ -37,32 +35,12 @@ const actionsCreators = {
           dispatch(actionsGeneral.changeStatus(true));
         }),
         withPostFailure((dispatch, response) => {
-          console.log(response);
           localStorage.clear();
           dispatch(privateActionCreators.getTokenError(response.problem));
           dispatch(actionsGeneral.changeStatus(false));
         }),
       ]
-      // successSelector: response => response.data.id
     }
-    // dispatch({ 
-    //   type: actions.GET_TOKEN,
-    //   target: 'token'
-    //  });
-    // const response = await LoginService.getToken(body);
-    // if (response.ok) {
-    //   localStorage.setItem('token', response.data.id);
-    //   api.setHeader('Authorization', response.data.id)
-    //   const dataToState = {
-    //     idUser: response.data.userId,
-    //     email: body.email
-    //   }
-    //   dispatch(privateActionCreators.getTokenSuccess(dataToState))
-    // } else {
-    //   localStorage.clear();
-    //   dispatch(privateActionCreators.getTokenError(response.problem));
-    // }
-    // dispatch(actionsGeneral.changeStatus(!!response.ok))
   },
   deleteToken: (response) => ({
     type: actions.GET_TOKEN_SUCCESS,

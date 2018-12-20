@@ -8,9 +8,7 @@ import general from './general/reducers';
 import results from './results/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-underscore-dangle
-const Enhancers = [];
-
-// Enhancers.push(applyMiddleware(fetchMiddleware));
+const Enhancers = [applyMiddleware(thunk, fetchMiddleware)];
 
 const reducers = {
   user: login,
@@ -22,5 +20,5 @@ const reducers = {
 
 export default createStore(
   combineReducers(reducers),
-  composeEnhancers(applyMiddleware(thunk, fetchMiddleware))
+  composeEnhancers(...Enhancers)
 );
