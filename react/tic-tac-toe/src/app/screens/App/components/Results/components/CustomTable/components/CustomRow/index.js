@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { userPropType } from 'constants/propTypes';
 
 class CustomRow extends Component {
-  renderItem = item => {
-    return <div>{item}</div>;
-  };
+  renderField = (field) => <div key={this.props.rowData.id} className={`row${this.props.index}`}>{`${this.props.rowData[field]}`}</div>;
 
-  renderField = (field) => {
-    return <div key={this.props.rowData.id} className={`row${this.props.index}`}>{`${this.props.rowData[field]}`}</div>
-  }
   render() {
     const { rowData } = this.props;
     return (
@@ -20,7 +16,7 @@ class CustomRow extends Component {
 }
 
 CustomRow.propTypes = {
-  rowData: PropTypes.object,
+  rowData: PropTypes.objectOf(userPropType),
   index: PropTypes.number
 }
 

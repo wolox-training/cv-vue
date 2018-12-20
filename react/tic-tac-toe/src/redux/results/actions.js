@@ -1,4 +1,4 @@
-import { DATA } from 'constans/users';
+import { DATA } from 'constants/users';
 
 export const actions = {
   GET_RESULTS: '@@RESULTS/GET_RESULTS'
