@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { userPropType } from 'constants/propTypes'
 import actions from 'redux/results/actions';
 import CustomTable from './components/CustomTable';
 import Button from './components/Botton';
 import styles from './styles.module.scss';
 
 class Result extends Component {
-  handleOnClick = () => {
-    this.props.history.goBack();
-  }
-
   componentDidMount() {
     this.props.dispatch(actions.getResults())
+  }
+
+  handleOnClick = () => {
+    this.props.history.goBack();
   }
 
   render(){
@@ -41,7 +42,7 @@ const mapStateToProps = ({ results: { positions }}) => ({
 });
 
 Result.propTypes = { 
-  positions: PropTypes.array
+  positions: PropTypes.arrayOf(userPropType)
 }
 
 export default connect(mapStateToProps)(Result);

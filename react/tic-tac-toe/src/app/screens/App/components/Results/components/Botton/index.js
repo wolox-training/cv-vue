@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
 function CustomButton (props) {
-  return <button 
-    className={styles.backButton} 
-    onClick={props.onClick}>
-      <i className={props.icon}></i>
+  return (
+    <button 
+      className={styles.backButton} 
+      onClick={props.onClick}>
+        <i className={props.icon}></i>
     </button>
+  )
 }
 
 CustomButton.propTypes = {

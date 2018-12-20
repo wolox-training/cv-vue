@@ -2,16 +2,16 @@
 @import 'scss/_variables.scss';
 
 .title {
-  text-align: center;
   color: $greenGrey;
   display: block;
   font-size: $text-very-big;
+  text-align: center;
 }
 
 .containerTable {
-  margin: 35px;
   background-color: $greenBlue;
-  height: 650px;
   border-radius: 10px;
+  height: 650px;
   font-size: $text-big;
+  margin: 35px;
 }
