@@ -1,0 +1,17 @@
+@import 'scss/_colors.scss';
+@import 'scss/_variables.scss';
+
+.title {
+  color: $greenGrey;
+  display: block;
+  font-size: $text-very-big;
+  text-align: center;
+}
+
+.containerTable {
+  background-color: $greenBlue;
+  border-radius: 10px;
+  height: 650px;
+  font-size: $text-big;
+  margin: 35px;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
@@ -8,10 +8,11 @@ import styles from './styles.module.scss';
 function LinkItem ({ to, name, icon }) {
   return (
     <div className={styles.container}>
-      <Link 
+      <NavLink 
+        activeClassName={styles.active}
         className={styles.link} to={to}>
         <i className={cx(icon, styles.icon)}></i> {name} 
-      </Link>
+      </NavLink>
     </div>
   );
 }

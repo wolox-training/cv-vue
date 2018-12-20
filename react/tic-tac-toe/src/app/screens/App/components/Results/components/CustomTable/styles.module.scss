@@ -1,0 +1,23 @@
+@import 'scss/_colors.scss';
+@import 'scss/_variables.scss';
+
+.titleItem {
+  color: $brown;
+  font-size: $text-big;
+  margin-top:15px;
+  text-transform: uppercase;
+}
+
+.row {
+  color: $whiteGrey;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 30px 100px auto repeat(4, 50px);
+  margin: 20px;
+}
+
+@media screen and (max-width: $responsive-size) {
+  .row, .titleItem {
+    font-size: $text-medium;
+  }
+}

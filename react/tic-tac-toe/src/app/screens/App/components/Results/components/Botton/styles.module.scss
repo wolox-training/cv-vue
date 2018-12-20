@@ -1,0 +1,16 @@
+@import 'scss/_colors.scss';
+
+.backButton {
+  background-color: $whiteGrey;
+  border-radius: 50%;
+  color: $greenBlue;
+  height: 50px;
+  font-size: 46px;
+  margin: 10px;
+  width: 50px;
+
+  &:hover {
+    background-color: $greenBlue;
+    color: $brown;
+  }
+}
