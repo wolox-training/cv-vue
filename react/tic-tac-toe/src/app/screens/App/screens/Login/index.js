@@ -19,18 +19,20 @@ class Login extends Component {
   render() {
     return (
       <>
-        <LoginForm onSubmit={this.handleSubmit} />
+        <LoginForm isLogin={this.props.tokenLoading} onSubmit={this.handleSubmit} />
       </>
     )
   }
 }
 
-const mapStateToProps = ({ general: { isLogged } }) => ({
-  isLogged
+const mapStateToProps = ({ general: { isLogged }, user: { tokenLoading } }) => ({
+  isLogged,
+  tokenLoading
 });
 
-Login.propsTypes = {
-  isLogged: PropTypes.bool
+Login.propTypes = {
+  isLogged: PropTypes.bool,
+  tokenLoading: PropTypes.bool
 }
 
 export default connect(mapStateToProps)(Login);
