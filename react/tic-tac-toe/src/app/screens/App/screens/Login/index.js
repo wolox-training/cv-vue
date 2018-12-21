@@ -30,7 +30,7 @@ const mapStateToProps = ({ general: { isLogged }, user: { tokenLoading } }) => (
   tokenLoading
 });
 
-Login.propsTypes = {
+Login.propTypes = {
   isLogged: PropTypes.bool,
   tokenLoading: PropTypes.bool
 }
