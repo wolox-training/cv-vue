@@ -1,13 +1,13 @@
+import { createTypes } from 'redux-recompose';
 import { DATA } from 'constants/users';
 
-export const actions = {
-  GET_RESULTS: '@@RESULTS/GET_RESULTS'
-}
+export const actions = createTypes(['GET_RESULTS'], '@@RESULTS');
 
 const actionsCreators = {
   getResults: () => ({
     type: actions.GET_RESULTS,
-    payload: DATA
+    payload: DATA,
+    target: 'positions'
   })
 }
 

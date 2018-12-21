@@ -1,20 +1,33 @@
 import { actions } from './actions';
+import { createReducer, completeReducer } from 'redux-recompose';
+import { onLoading } from '../utils';
 
+// TODO : used completeState is not necessary on this because token is not stage on state
 const initialState = {
+  tokenLoading: false,
   email: '',
   idUser: null,
   status: ''
 };
 
-function reducer(state = initialState, {type, payload}) {
-  switch (type) {
-    case actions.GET_TOKEN_SUCCESS:
-      return { ...state, email: payload.email, idUser: payload.idUser, status: 'valid'};
-    case actions.GET_TOKEN_FAILURE:
-      return { ...state, email: '', idUser: null, status: payload };
-    default:
-      return state;
+const reducerDescription = {
+  primaryActions: [actions.GET_TOKEN],
+  overrides: {
+    [actions.GET_TOKEN_SUCCESS]: (state, action) => ({
+      ...state,
+      tokenLoading: false,
+      email: action.payload.email,
+      idUser: action.payload.idUser,
+      status: 'valid'
+    }),
+    [actions.GET_TOKEN_FAILURE]: (state, action) => ({
+      ...state,
+      tokenLoading: false,
+      status: action.payload,
+      email: '',
+      idUser: null
+    })
   }
-}
+};
 
-export default reducer;
+export default createReducer(initialState, completeReducer(reducerDescription));

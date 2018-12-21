@@ -1,16 +1,13 @@
 import { actions } from './actions';
+import { onChange } from '../utils';
+import { createReducer } from 'redux-recompose';
 
 const initialState = {
   positions: []
 }
 
-function reducer(state = initialState, { type, payload } ) {
-  switch (type) {
-    case actions.GET_RESULTS:
-      return {...state, positions: payload };
-    default: 
-      return state;
-  }
-}
+const reducerDescription = {
+  [actions.GET_RESULTS]: onChange()
+};
 
-export default reducer;
+export default createReducer(initialState, reducerDescription);

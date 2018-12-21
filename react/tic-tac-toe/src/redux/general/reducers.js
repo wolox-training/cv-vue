@@ -1,18 +1,14 @@
 import { actions } from './actions';
+import { onChange } from '../utils';
+import { createReducer } from 'redux-recompose';
 
-const initialStates = {
+// TODO : used completeState is not necessary on this because only it has one state.
+const initialState = {
   isLogged : false
 };
 
-function reducer(state = initialStates, action) {
-  switch (action.type) {
-    case actions.GET_STATUS:
-      return { ...state}
-    case actions.CHANGE_STATUS:
-      return { ...state, isLogged: action.payload }
-    default :
-      return state;
-  }
-}
+const reducerDescription = {
+  [actions.CHANGE_STATUS]: onChange()
+};
 
-export default reducer;
+export default createReducer(initialState, reducerDescription);

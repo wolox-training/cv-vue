@@ -1,7 +1,6 @@
-export const actions = {
-  ADD_STEP: '@@GAME/ADD_STEP',
-  JUMP_TO: '@@GAME/JUMP-TO'
-}
+import { createTypes } from 'redux-recompose';
+
+export const actions = createTypes(['ADD_STEP', 'JUMP_TO'], '@@GAME');
 
 const actionsCreators = {
   addStep: values => ({
