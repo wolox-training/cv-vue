@@ -34,7 +34,8 @@ const mapStateToProps = ({ general: { isLogged }, user: { tokenLoading } }) => (
 });
 
 Login.propsTypes = {
-  isLogged: PropTypes.bool
+  isLogged: PropTypes.bool,
+  tokenLoading: PropTypes.bool
 }
 
 export default connect(mapStateToProps)(Login);
