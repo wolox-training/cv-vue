@@ -1,0 +1,17 @@
+@import 'scss/_colors.scss';
+@import 'scss/_variables.scss';
+
+.textLoader {
+  color: $brown;
+  font-size: $text-big;
+  left: 50%;
+  margin-top: 30%;
+  position: relative;
+
+  &::before {
+    content: url('http://css-tricks.com/examples/PageLoadLightBox/loader.gif');
+    left: 30px;
+    position: absolute;
+    top: 30px;
+  }
+}

@@ -7,9 +7,10 @@ import CustomRoute from '../../components/CustomRoute'
 import Navbar from 'app/components/Navbar';
 import Game from './components/Game'
 import Result from './components/Results'
-
 import { tokenExist } from 'app/screens/App/utils';
+
 class App extends Component {
+
   
   removeAndRedirect = () => {
     localStorage.removeItem('token');
