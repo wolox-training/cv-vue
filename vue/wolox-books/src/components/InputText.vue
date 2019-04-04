@@ -2,12 +2,17 @@
   .input-text-container
     label(class='input-text-label' :for='name')
       |{{ label }}
-    input(class='input-text-content' :id='name')
+    input(class='input-text-content' :id='name' @input='handleInput' v-model='value' )
 </template>
 
 <script>
 export default {
   name: 'InputText',
+  data () {
+    return {
+      value: null
+    }
+  },
   props: {
     label: {
       type: String,
@@ -16,6 +21,11 @@ export default {
     name: {
       type: String,
       required: true
+    }
+  },
+  methods: {
+    handleInput () {
+      return this.$emit('input', this.value)
     }
   }
 }
@@ -35,7 +45,7 @@ export default {
   }
 
   .input-text-label {
-    color: $black;
+    color: $cod-gray;
     font-size: $input-text;
     font-weight: 500;
     margin-left: 10px;
@@ -44,6 +54,7 @@ export default {
   .input-text-content {
     border-radius: 10px;
     height: 40px;
+    padding: 0 5px;
     width: 350px;
   }
 

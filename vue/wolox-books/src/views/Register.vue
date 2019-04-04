@@ -1,16 +1,17 @@
-<template lang="pug">
+<template lang='pug'>
   .register-container
-    img(alt="Vue logo" src="../assets/wolox_logo.svg" class="wolox-icon")
-    form(class="form-container")
-      p(class="title-form")
+    img(alt='Vue logo' src='../assets/wolox_logo.svg' class='wolox-icon')
+    form(class='form-container' @submit.prevent="onSubmit")
+      p(class='title-form')
         |{{labels.title}}
-      InputText(v-for="(field, index) in fields"
-        :name="field.name"
-        :label="field.label"
-        :key="index"
+      InputText(v-for='(field, index) in fields'
+        :name='field.name'
+        :label='field.label'
+        :key='index'
+        v-model='user[field.name]'
       )
-      MainBtn(:label="labels.singUp")
-    MainBtn(:label="labels.singIn" class="login-button")
+      MainBtn(:label='labels.singUp')
+    MainBtn(:label='labels.singIn' class='login-button')
 </template>
 
 <script>
@@ -34,13 +35,13 @@ const fieldsArray = [
     name: 'password',
     label: 'Password'
   }
-];
+]
 
 const labels = {
   title: 'BOOKS',
   singUp: 'Sing up',
   singIn: 'Login'
-};
+}
 
 export default {
   name: 'register',
@@ -60,25 +61,25 @@ export default {
   },
   data () {
     return {
-      title: 'BOOKS',
-      singUp: 'Sing up',
-      singIn: 'Login'
+      user: {}
     }
   },
   methods: {
-    
+    onSubmit () {
+      console.log(this.user, 'user info')
+    }
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
   @import 'src/scss/colors';
   @import 'src/scss/fonts';
 
   .register-container {
     background-color: $wild-sand;
     border-top: 5px solid $cerulean;
-    margin: auto;
+    margin: 50px auto;
     max-width: 400px;
     width: 100%;
   }
