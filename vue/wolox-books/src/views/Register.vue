@@ -1,7 +1,7 @@
 <template lang="pug">
   .register-container
     form(class="form-container")
-      img(alt="Vue logo" src="../assets/wolox_image.png" class="wolox-icon")
+      img(alt="Vue logo" src="../assets/wolox_logo.svg" class="wolox-icon")
       p(class="title-form")
         |{{title}}
       InputText(v-for="(field, index) in fields"
@@ -9,6 +9,7 @@
         :label="field.label"
         :key="index"
       )
+
 </template>
 
 <script>
@@ -25,11 +26,11 @@ export default {
       fields: [
         {
           name: 'fisrtName',
-          label: 'First Name'
+          label: 'First name'
         },
         {
           name: 'lastName',
-          label: 'Last Name'
+          label: 'Last name'
         },
         {
           name: 'email',
@@ -59,8 +60,7 @@ export default {
   }
 
   .wolox-icon {
-    margin: 30px 25px 10px;
-    object-fit: contain;
+    margin: 35px 30px 10px;
   }
 
   .title-form {
@@ -74,12 +74,12 @@ export default {
 
   .form-container {
     background-color: $wild-sand;
-    border-top: 3px solid $cerulean;
+    border-top: 5px solid $cerulean;
     display: flex;
     flex-direction: column;
     height: 100%;
     max-height: 600px;
-    max-width: 450px;
+    max-width: 400px;
     width: 100%;
   }
 
