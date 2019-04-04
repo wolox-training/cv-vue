@@ -1,10 +1,14 @@
 <template lang="pug">
-  .fields-container
-    InputText(v-for="(field, index) in fields"
-    :name="field.name"
-    :label="field.label"
-    :key="index"
-    )
+  .register-container
+    form(class="form-container")
+      img(alt="Vue logo" src="../assets/wolox_image.png" class="wolox-icon")
+      p(class="title-form")
+        |{{title}}
+      InputText(v-for="(field, index) in fields"
+        :name="field.name"
+        :label="field.label"
+        :key="index"
+      )
 </template>
 
 <script>
@@ -35,8 +39,48 @@ export default {
           name: 'password',
           label: 'Password'
         }
-      ]
+      ],
+      title: 'BOOKS'
     }
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import 'src/scss/colors';
+  @import 'src/scss/fonts';
+
+  .register-container {
+    align-content: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .wolox-icon {
+    margin: 30px 25px 10px;
+    object-fit: contain;
+  }
+
+  .title-form {
+    color: $black;
+    font-size: $title-form;
+    font-weight: bold;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .form-container {
+    background-color: $wild-sand;
+    border-top: 3px solid $cerulean;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 600px;
+    max-width: 450px;
+    width: 100%;
+  }
+
+</style>
