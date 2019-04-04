@@ -1,21 +1,27 @@
-<template lang="pug">
+<template lang='pug'>
   .input-text-container
-    label(class="input-text-label")
-      |{{label}}
-    input(class="input-text-content")
+    label(class='input-text-label' :for='name')
+      |{{ label }}
+    input(class='input-text-content' :id='name')
 </template>
 
 <script>
 export default {
   name: 'InputText',
   props: {
-    label: String,
-    name: String
+    label: {
+      type: String,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    }
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
   @import 'src/scss/fonts';
   @import 'src/scss/colors';
 

@@ -1,48 +1,72 @@
 <template lang="pug">
   .register-container
+    img(alt="Vue logo" src="../assets/wolox_logo.svg" class="wolox-icon")
     form(class="form-container")
-      img(alt="Vue logo" src="../assets/wolox_logo.svg" class="wolox-icon")
       p(class="title-form")
-        |{{title}}
+        |{{labels.title}}
       InputText(v-for="(field, index) in fields"
         :name="field.name"
         :label="field.label"
         :key="index"
       )
-
+      MainBtn(:label="labels.singUp")
+    MainBtn(:label="labels.singIn" class="login-button")
 </template>
 
 <script>
-// @ is an alias to /src
 import InputText from '@/components/InputText.vue'
+import MainBtn from '@/components/MainButton.vue'
+
+const fieldsArray = [
+  {
+    name: 'fisrtName',
+    label: 'First name'
+  },
+  {
+    name: 'lastName',
+    label: 'Last name'
+  },
+  {
+    name: 'email',
+    label: 'Email'
+  },
+  {
+    name: 'password',
+    label: 'Password'
+  }
+];
+
+const labels = {
+  title: 'BOOKS',
+  singUp: 'Sing up',
+  singIn: 'Login'
+};
 
 export default {
   name: 'register',
+  props: {
+    fields: {
+      type: Array,
+      default: () => fieldsArray
+    },
+    labels: {
+      type: Object,
+      default: () => labels
+    }
+  },
   components: {
-    InputText
+    InputText,
+    MainBtn
   },
   data () {
     return {
-      fields: [
-        {
-          name: 'fisrtName',
-          label: 'First name'
-        },
-        {
-          name: 'lastName',
-          label: 'Last name'
-        },
-        {
-          name: 'email',
-          label: 'Email'
-        },
-        {
-          name: 'password',
-          label: 'Password'
-        }
-      ],
-      title: 'BOOKS'
+      title: 'BOOKS',
+      singUp: 'Sing up',
+      singIn: 'Login'
     }
+  },
+  methods: {
+    
   }
 }
 </script>
@@ -52,10 +76,10 @@ export default {
   @import 'src/scss/fonts';
 
   .register-container {
-    align-content: center;
-    display: flex;
-    height: 100%;
-    justify-content: center;
+    background-color: $wild-sand;
+    border-top: 5px solid $cerulean;
+    margin: auto;
+    max-width: 400px;
     width: 100%;
   }
 
@@ -73,14 +97,30 @@ export default {
   }
 
   .form-container {
-    background-color: $wild-sand;
-    border-top: 5px solid $cerulean;
     display: flex;
     flex-direction: column;
     height: 100%;
+    margin-bottom: 20px;
     max-height: 600px;
-    max-width: 400px;
     width: 100%;
+  }
+
+  .login-button {
+    background-color: $wild-sand;
+    border: 1px solid $atlantis;
+    color: $atlantis;
+    margin-bottom: 20px;
+    position: relative;
+
+    &::before {
+      background-color: $alto;
+      content: '';
+      height: 2px;
+      left: 0;
+      position: absolute;
+      top: -20px;
+      width: 100%;
+    }
   }
 
 </style>
