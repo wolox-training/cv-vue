@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// import Register from './views/Test.vue'
 import Register from './views/Register.vue'
 
 Vue.use(Router)

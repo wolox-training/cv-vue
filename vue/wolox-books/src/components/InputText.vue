@@ -1,11 +1,21 @@
 <template lang='pug'>
-  .input-text-container
-    label(class='input-text-label' :for='name')
-      |{{ label }}
-    input(class='input-text-content' :id='name' @input='handleInput' v-model='value' )
+  .input-text-container(:class='{ "input-text-error" : error }')
+    label(
+      class='input-text-label' 
+      :for='name')
+        |{{ label }}
+    input(
+      class='input-text-content'
+      :id='name'
+      @input='handleInput'
+      v-model='value' )
+    p(v-show='error')
+      |error
 </template>
 
 <script>
+// :class='{ "input-text-label-error": error }'
+// :class='{ "input-text-content-error" : error }'
 export default {
   name: 'InputText',
   data () {
@@ -21,10 +31,15 @@ export default {
     name: {
       type: String,
       required: true
+    },
+    error: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
     handleInput () {
+      console.log(this.$v);
       return this.$emit('input', this.value)
     }
   }
@@ -42,6 +57,16 @@ export default {
     height: 70px;
     justify-content: space-around;
     margin: 10px auto;
+  }
+
+  .input-text-error {
+    .input-text-label {
+      color: $crimson;
+    }
+
+    .input-text-content {
+      border: 1px solid $crimson;
+    }
   }
 
   .input-text-label {

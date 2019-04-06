@@ -1,16 +1,18 @@
 <template lang='pug'>
   .register-container
     img(alt='Vue logo' src='../assets/wolox_logo.svg' class='wolox-icon')
-    form(class='form-container' @submit.prevent="onSubmit")
+    form(class='form-container' @submit.prevent='onSubmit')
       p(class='title-form')
         |{{labels.title}}
       InputText(v-for='(field, index) in fields'
         :name='field.name'
         :label='field.label'
         :key='index'
-        v-model='user[field.name]'
+        :class='{ "has-error": $v.user[field.name].$error }'
+        :error='$v.user[field.name].$error'
+        v-model.trim='user[field.name]'
       )
-      MainBtn(:label='labels.singUp')
+      MainBtn(:label='labels.singUp' type="submit")
     MainBtn(:label='labels.singIn' class='login-button')
 </template>
 
@@ -18,9 +20,11 @@
 import InputText from '@/components/InputText.vue'
 import MainBtn from '@/components/MainButton.vue'
 
+import { required, email, minLength } from 'vuelidate/lib/validators'
+
 const fieldsArray = [
   {
-    name: 'fisrtName',
+    name: 'firstName',
     label: 'First name'
   },
   {
@@ -64,9 +68,21 @@ export default {
       user: {}
     }
   },
+  validations: {
+    user: {
+      firstName: { required, min: minLength(10) },
+      lastName: { required },
+      email: { required, email },
+      password: { required }
+    }
+  },
   methods: {
     onSubmit () {
-      console.log(this.user, 'user info')
+      console.log(this.$v.user)
+      if (this.user.invalid) {
+        console.log('is invalid')
+      }
+      // console.log(this.user, 'user info')
     }
   }
 }

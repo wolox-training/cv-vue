@@ -1,5 +1,5 @@
 <template lang="pug">
-  button(class="base-form-button")
+  button(class="base-form-button" type='type')
     |{{label}}
 </template>
 
@@ -10,6 +10,10 @@ export default {
     label: {
       type: String,
       required: true
+    },
+    type: {
+      type: String,
+      default: 'button'
     }
   }
 }
