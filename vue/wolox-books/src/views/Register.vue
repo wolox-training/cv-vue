@@ -17,10 +17,12 @@
 </template>
 
 <script>
+import { required, email, minLength } from 'vuelidate/lib/validators'
+
 import InputText from '@/components/InputText.vue'
 import MainBtn from '@/components/MainButton.vue'
 
-import { required, email, minLength } from 'vuelidate/lib/validators'
+import { PasswordValidator } from '@/utils/customValidator'
 
 const fieldsArray = [
   {
@@ -73,7 +75,7 @@ export default {
       firstName: { required, min: minLength(10) },
       lastName: { required },
       email: { required, email },
-      password: { required }
+      password: { required, PasswordValidator }
     }
   },
   methods: {

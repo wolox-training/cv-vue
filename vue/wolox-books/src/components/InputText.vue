@@ -48,6 +48,7 @@ export default {
     },
     getError () {
       const fieldsErrors = Object.keys(this.vuelidateProperties.$params)
+      console.log(this.vuelidateProperties, 'field')
       if (fieldsErrors.length) {
         for (const fieldError of fieldsErrors) {
           if (!this.vuelidateProperties[fieldError]) {
@@ -56,6 +57,9 @@ export default {
         }
       }
     }
+  },
+  mounted () {
+    console.log(this.vuelidateProperties, 'mounted')
   }
 }
 </script>

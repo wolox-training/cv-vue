@@ -7,6 +7,9 @@ export const dictionary = code => {
     case 'min':
       errorType = 'No cumple con el mínimo de caracteres'
       break
+    case 'PasswordValidator':
+      errorType = 'Debe contener un número y una letra mayúscula'
+      break
     default:
       errorType = 'Campo requerido'
   }
