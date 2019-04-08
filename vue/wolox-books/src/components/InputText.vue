@@ -9,11 +9,15 @@
       :id='name'
       @input='handleInput'
       v-model='value' )
-    p(v-show='error')
-      |error
+    p(
+      class='field-error'
+      v-show='error')
+        |{{ getError(vuelidateProperties) }}
 </template>
 
 <script>
+import { dictionary } from '@/utils/generalFunctions.js'
+
 export default {
   name: 'InputText',
   data () {
@@ -41,10 +45,17 @@ export default {
   methods: {
     handleInput () {
       return this.$emit('input', this.value)
+    },
+    getError () {
+      const fieldsErrors = Object.keys(this.vuelidateProperties.$params)
+      if (fieldsErrors.length) {
+        for (const fieldError of fieldsErrors) {
+          if (!this.vuelidateProperties[fieldError]) {
+            return dictionary(fieldError)
+          }
+        }
+      }
     }
-  },
-  mounted: function () {
-    console.log(this.vuelidateProperties, 'mounted')
   }
 }
 </script>
@@ -64,11 +75,11 @@ export default {
 
   .input-text-error {
     .input-text-label {
-      color: $crimson;
+      color: $torch-red;
     }
 
     .input-text-content {
-      border: 1px solid $crimson;
+      border: 0.5px solid $torch-red;
     }
   }
 
@@ -84,6 +95,12 @@ export default {
     height: 40px;
     padding: 0 5px;
     width: 350px;
+  }
+
+  .field-error {
+    color: $torch-red;
+    font-size: 12px;
+    margin-left: 15px;
   }
 
 </style>

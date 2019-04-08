@@ -79,10 +79,6 @@ export default {
   methods: {
     onSubmit () {
       this.$v.user.$touch()
-      // console.log(this.$v.user )
-      // if (this.user.invalid) {
-      //   console.log('is invalid')
-      // }
       console.log(this.user, 'user info')
     }
   }
