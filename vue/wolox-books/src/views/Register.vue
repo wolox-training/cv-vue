@@ -1,17 +1,17 @@
 <template lang='pug'>
   .register-container
-    img(alt='Vue logo' src='../assets/wolox_logo.svg' class='wolox-icon')
-    form(class='form-container' @submit.prevent="onSubmit")
-      p(class='title-form')
+    img.wolox-icon(alt='Vue logo' src='../assets/wolox_logo.svg')
+    form.form-container(@submit.prevent="onSubmit")
+      p.title-form
         |{{labels.title}}
-      InputText(v-for='(field, index) in fields'
+      input-text(v-for='(field, index) in fields'
         :name='field.name'
         :label='field.label'
         :key='index'
         v-model='user[field.name]'
       )
-      MainBtn(:label='labels.singUp')
-    MainBtn(:label='labels.singIn' class='login-button')
+      main-btn(:label='labels.singUp')
+    main-btn(:label='labels.singIn' class='login-button')
 </template>
 
 <script>
