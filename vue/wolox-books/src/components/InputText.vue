@@ -1,7 +1,7 @@
 <template lang='pug'>
   .input-text-container(:class='{ "input-text-error" : error }')
     label(
-      class='input-text-label' 
+      class='input-text-label'
       :for='name')
         |{{ label }}
     input(
@@ -14,8 +14,6 @@
 </template>
 
 <script>
-// :class='{ "input-text-label-error": error }'
-// :class='{ "input-text-content-error" : error }'
 export default {
   name: 'InputText',
   data () {
@@ -35,13 +33,18 @@ export default {
     error: {
       type: Boolean,
       default: false
+    },
+    vuelidateProperties: {
+      type: Object
     }
   },
   methods: {
     handleInput () {
-      console.log(this.$v);
       return this.$emit('input', this.value)
     }
+  },
+  mounted: function () {
+    console.log(this.vuelidateProperties, 'mounted')
   }
 }
 </script>

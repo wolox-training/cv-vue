@@ -8,8 +8,8 @@
         :name='field.name'
         :label='field.label'
         :key='index'
-        :class='{ "has-error": $v.user[field.name].$error }'
         :error='$v.user[field.name].$error'
+        :vuelidateProperties='$v.user[field.name]'
         v-model.trim='user[field.name]'
       )
       MainBtn(:label='labels.singUp' type="submit")
@@ -78,11 +78,12 @@ export default {
   },
   methods: {
     onSubmit () {
-      console.log(this.$v.user)
-      if (this.user.invalid) {
-        console.log('is invalid')
-      }
-      // console.log(this.user, 'user info')
+      this.$v.user.$touch()
+      // console.log(this.$v.user )
+      // if (this.user.invalid) {
+      //   console.log('is invalid')
+      // }
+      console.log(this.user, 'user info')
     }
   }
 }
