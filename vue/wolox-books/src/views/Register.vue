@@ -4,19 +4,18 @@
     form.form-container(@submit.prevent="onSubmit")
       p.title-form
         |{{labels.title}}
-      input-text(v-for='(field, index) in fields'
-        :name='field.name'
-        :label='field.label'
-        :key='index'
-        v-model='user[field.name]'
-      )
-      main-btn(:label='labels.singUp')
-    main-btn(:label='labels.singIn' class='login-button')
+      .input-text-container(v-for='(field, index) in fields')
+        label.input-text-label(:for='field.name')
+          |{{ field.label }}
+        input.input-text-content(:id='field.name' v-model='user[field.name]' )
+      button.base-form-button
+        |{{ labels.signUp }}
+    .container-button
+      button.base-form-button.login-button
+        |{{ labels.signIn }}
 </template>
 
 <script>
-import InputText from '@/components/InputText.vue'
-import MainBtn from '@/components/MainButton.vue'
 
 const fieldsArray = [
   {
@@ -39,8 +38,8 @@ const fieldsArray = [
 
 const labels = {
   title: 'BOOKS',
-  singUp: 'Sing up',
-  singIn: 'Login'
+  signUp: 'Sign up',
+  signIn: 'Login'
 }
 
 export default {
@@ -54,10 +53,6 @@ export default {
       type: Object,
       default: () => labels
     }
-  },
-  components: {
-    InputText,
-    MainBtn
   },
   data () {
     return {
@@ -103,6 +98,46 @@ export default {
     height: 100%;
     margin-bottom: 20px;
     max-height: 600px;
+    width: 100%;
+  }
+
+  .input-text-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    justify-content: space-around;
+    margin: 10px auto;
+  }
+
+  .input-text-label {
+    color: $cod-gray;
+    font-size: $input-text;
+    font-weight: 500;
+    margin-left: 10px;
+  }
+
+  .input-text-content {
+    border-radius: 10px;
+    height: 40px;
+    padding: 0 5px;
+    width: 350px;
+  }
+
+  .container-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .base-form-button {
+    background-color: $atlantis;
+    border-radius: 8px;
+    color: $white;
+    font-size: $main-button;
+    height: 45px;
+    margin: 10px auto;
+    max-width: 350px;
     width: 100%;
   }
 
