@@ -5,20 +5,15 @@
 </template>
 
 <style lang="scss">
-#app {
-  color: #2C3E50;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-}
+@import 'src/scss/colors';
+
 #nav {
   padding: 30px;
   a {
-    color: #2C3E50;
+    color: $pickled-bluewood;
     font-weight: bold;
     &.router-link-exact-active {
-      color: #42B983;
+      color: $ocean-green;
     }
   }
 }
