@@ -4,12 +4,15 @@
     form.form-container(@submit.prevent="onSubmit")
       p.title-form
         |{{ labels.title }}
-      .input-text-container(:class='{ "input-text-error" : $v.user[field.name].$error }' v-for='(field, index) in fields' key='index')
-        label.input-text-label(:for='field.name')
-          |{{ field.label }}
-        input.input-text-content(:id='field.name' v-model='user[field.name]' )
-        p.field-error(v-show='$v.user[field.name].$error')
-          |{{ getError($v.user[field.name]) }}
+      .input-text-container(
+        :class='{ "input-text-error" : $v.user[field.name].$error }'
+        v-for='(field, index) in fields'
+        key='index')
+          label.input-text-label(:for='field.name')
+            |{{ field.label }}
+          input.input-text-content(:id='field.name' v-model='user[field.name]' )
+          p.field-error(v-show='$v.user[field.name].$error')
+            |{{ getError($v.user[field.name]) }}
       button.base-form-button
         |{{ labels.signUp }}
     .container-button
@@ -80,7 +83,6 @@ export default {
     },
     getError (vuelidateProperties) {
       const fieldsErrors = Object.keys(vuelidateProperties.$params)
-      console.log(vuelidateProperties, 'field')
       if (fieldsErrors.length) {
         for (const fieldError of fieldsErrors) {
           if (!vuelidateProperties[fieldError]) {
