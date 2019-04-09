@@ -7,7 +7,7 @@
       .input-text-container(
         :class='{ "input-text-error" : $v.user[field.name].$error }'
         v-for='(field, index) in fields'
-        key='index')
+        :key='index')
           label.input-text-label(:for='field.name')
             |{{ field.label }}
           input.input-text-content(:id='field.name' v-model='user[field.name]' )
@@ -22,34 +22,10 @@
 
 <script>
 import { required, minLength, email } from 'vuelidate/lib/validators'
-
-import { PasswordValidator } from '@/utils/customValidator'
 import { dictionary } from '@/utils/generalFunctions'
+import { PasswordValidator } from '@/utils/customValidator'
 
-const fieldsArray = [
-  {
-    name: 'firstName',
-    label: 'First name'
-  },
-  {
-    name: 'lastName',
-    label: 'Last name'
-  },
-  {
-    name: 'email',
-    label: 'Email'
-  },
-  {
-    name: 'password',
-    label: 'Password'
-  }
-]
-
-const labels = {
-  title: 'BOOKS',
-  signUp: 'Sign up',
-  signIn: 'Login'
-}
+import { labels, fieldsArray } from './constants'
 
 export default {
   name: 'register',
@@ -86,7 +62,7 @@ export default {
       if (fieldsErrors.length) {
         for (const fieldError of fieldsErrors) {
           if (!vuelidateProperties[fieldError]) {
-            return dictionary(fieldError)
+            return dictionary[fieldError]
           }
         }
       }
@@ -130,7 +106,6 @@ export default {
   }
 
   .input-text-container {
-    align-items: flex-start;
     display: flex;
     flex-direction: column;
     height: 70px;
