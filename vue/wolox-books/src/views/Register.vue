@@ -4,7 +4,7 @@
     form.form-container(@submit.prevent="onSubmit")
       p.title-form
         |{{labels.title}}
-      .input-text-container(v-for='(field, index) in fields')
+      .input-text-container(v-for='(field, index) in fields' :key='index')
         label.input-text-label(:for='field.name')
           |{{ field.label }}
         input.input-text-content(:id='field.name' v-model='user[field.name]' )
@@ -16,31 +16,7 @@
 </template>
 
 <script>
-
-const fieldsArray = [
-  {
-    name: 'fisrtName',
-    label: 'First name'
-  },
-  {
-    name: 'lastName',
-    label: 'Last name'
-  },
-  {
-    name: 'email',
-    label: 'Email'
-  },
-  {
-    name: 'password',
-    label: 'Password'
-  }
-]
-
-const labels = {
-  title: 'BOOKS',
-  signUp: 'Sign up',
-  signIn: 'Login'
-}
+import { labels, fieldsArray } from './constants'
 
 export default {
   name: 'register',
@@ -102,7 +78,6 @@ export default {
   }
 
   .input-text-container {
-    align-items: flex-start;
     display: flex;
     flex-direction: column;
     height: 70px;
