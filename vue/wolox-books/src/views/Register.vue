@@ -7,7 +7,7 @@
       .input-text-container(
         :class='{ "input-text-error" : $v.user[field.name].$error }'
         v-for='(field, index) in fields'
-        key='index')
+        :key='index')
           label.input-text-label(:for='field.name')
             |{{ field.label }}
           input.input-text-content(:id='field.name' v-model='user[field.name]' )
@@ -86,7 +86,7 @@ export default {
       if (fieldsErrors.length) {
         for (const fieldError of fieldsErrors) {
           if (!vuelidateProperties[fieldError]) {
-            return dictionary(fieldError)
+            return dictionary[fieldError]
           }
         }
       }
@@ -202,5 +202,4 @@ export default {
     font-size: $field-error;
     margin-left: 15px;
   }
-
 </style>
