@@ -1,6 +1,6 @@
 export const fieldsArray = [
   {
-    name: 'fisrtName',
+    name: 'firstName',
     label: 'First name'
   },
   {

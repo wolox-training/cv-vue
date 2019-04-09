@@ -5,8 +5,8 @@
       p.title-form
         |{{ labels.title }}
       .input-text-container(
-        :class='{ "input-text-error" : $v.user[field.name].$error }'
         v-for='(field, index) in fields'
+        :class='{ "input-text-error" : $v.user[field.name].$error }'
         :key='index')
           label.input-text-label(:for='field.name')
             |{{ field.label }}
@@ -22,8 +22,9 @@
 
 <script>
 import { required, minLength, email } from 'vuelidate/lib/validators'
-import { dictionary } from '@/utils/generalFunctions'
+
 import { PasswordValidator } from '@/utils/customValidator'
+import { dictionary } from '@/utils/generalFunctions'
 
 import { labels, fieldsArray } from './constants'
 
