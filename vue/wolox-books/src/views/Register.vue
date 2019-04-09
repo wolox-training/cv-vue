@@ -177,5 +177,4 @@ export default {
     font-size: $field-error;
     margin-left: 15px;
   }
-
 </style>

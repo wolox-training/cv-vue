@@ -1,4 +1,1 @@
-export const PasswordValidator = value => {
-  const regex = new RegExp(/^(?=.*\d)(?=.*[A-Z]).+$/)
-  return regex.test(value)
-}
+export const PasswordValidator = value => RegExp(/^(?=.*\d)(?=.*[A-Z]).+$/).test(value)
