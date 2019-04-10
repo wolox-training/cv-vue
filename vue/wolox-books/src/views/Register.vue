@@ -66,7 +66,7 @@ export default {
       if (!this.$v.user.$error) {
         const userData = { user: { ...this.user, locale: 'es' } }
         BookService.register(userData).then(response => {
-          if (response.data.error.length) {
+          if (response.data.error) {
             this.error = response.data.error[0]
           } else {
             this.goLogin()
