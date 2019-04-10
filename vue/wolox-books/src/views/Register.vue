@@ -57,12 +57,8 @@ export default {
   },
   methods: {
     onSubmit () {
-      console.log(this.$v.user, 'vuelidate')
-      const error = this.$v.getError()
-      console.log(error, 'ccc')
       this.$v.user.$touch()
       console.log(this.user, 'user info')
-      // this.goLogin()
     },
     getError (vuelidateProperties) {
       const fieldsErrors = Object.keys(vuelidateProperties.$params)
