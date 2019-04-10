@@ -58,7 +58,7 @@ export default {
     onSubmit () {
       this.$v.user.$touch()
       if (!this.$v.user.$error) {
-        BookService.register(JSON.parse(JSON.stringify(this.user)))
+        BookService.register(this.user)
       }
     },
     getError (vuelidateProperties) {
