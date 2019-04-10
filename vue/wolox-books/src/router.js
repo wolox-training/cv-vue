@@ -1,15 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Register from './views/Register.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    { path: '/', redirect: '/login' },
     {
-      path: '/',
-      name: 'register',
-      component: Register
+      path: '/sign_up',
+      name: 'sign_up',
+      component: () => import(/* webpackChunkName: "sign_up" */ './views/Register.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
     }
   ]
 })

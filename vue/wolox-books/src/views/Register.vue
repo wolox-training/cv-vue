@@ -1,8 +1,8 @@
 <template lang='pug'>
-  .register-container
-    img.wolox-icon(alt='Wolox logo' src='../assets/wolox_logo.svg')
-    form.form-container(@submit.prevent="onSubmit")
-      p.title-form
+  .base-layout-container
+    img.wolox-image(alt='Wolox logo' src='../assets/wolox_logo.svg')
+    form.base-form-container(@submit.prevent="onSubmit")
+      p.base-form-title
         |{{ labels.title }}
       .input-text-container(
         v-for='(field, index) in fields'
@@ -16,7 +16,9 @@
       button.base-form-button
         |{{ labels.signUp }}
     .container-button
-      button.base-form-button.login-button
+      button.base-form-button.login-button(
+        @click='goLogin'
+      )
         |{{ labels.signIn }}
 </template>
 
@@ -55,8 +57,12 @@ export default {
   },
   methods: {
     onSubmit () {
+      console.log(this.$v.user, 'vuelidate')
+      const error = this.$v.getError()
+      console.log(error, 'ccc')
       this.$v.user.$touch()
       console.log(this.user, 'user info')
+      // this.goLogin()
     },
     getError (vuelidateProperties) {
       const fieldsErrors = Object.keys(vuelidateProperties.$params)
@@ -67,6 +73,9 @@ export default {
           }
         }
       }
+    },
+    goLogin () {
+      this.$router.push('/login')
     }
   }
 }
@@ -75,36 +84,8 @@ export default {
 <style scoped lang='scss'>
   @import 'src/scss/colors';
   @import 'src/scss/fonts';
-
-  .register-container {
-    background-color: $wild-sand;
-    border-top: 5px solid $cerulean;
-    margin: 50px auto;
-    max-width: 400px;
-    width: 100%;
-  }
-
-  .wolox-icon {
-    margin: 35px 30px 10px;
-  }
-
-  .title-form {
-    color: $black;
-    font-size: $title-form;
-    font-weight: bold;
-    letter-spacing: 5px;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin-bottom: 20px;
-    max-height: 600px;
-    width: 100%;
-  }
+  @import 'src/scss/commons/form';
+  @import 'src/scss/commons/images';
 
   .input-text-container {
     display: flex;
@@ -132,17 +113,6 @@ export default {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-  }
-
-  .base-form-button {
-    background-color: $atlantis;
-    border-radius: 8px;
-    color: $white;
-    font-size: $main-button;
-    height: 45px;
-    margin: 10px auto;
-    max-width: 350px;
-    width: 100%;
   }
 
   .login-button {
