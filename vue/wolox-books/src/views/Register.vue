@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { required, minLength, email } from 'vuelidate/lib/validators'
+import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
 
 import { PasswordValidator } from '@/utils/customValidator'
 import { dictionary } from '@/utils/generalFunctions'
@@ -48,17 +48,19 @@ export default {
   },
   validations: {
     user: {
-      firstName: { required, min: minLength(10) },
-      lastName: { required },
+      first_name: { required, min: minLength(10) },
+      last_name: { required },
       email: { required, email },
-      password: { required, PasswordValidator }
+      password: { required, PasswordValidator },
+      password_confirmation: { required, sameAsPassword: sameAs('password') }
     }
   },
   methods: {
     onSubmit () {
       this.$v.user.$touch()
       if (!this.$v.user.$error) {
-        BookService.register(this.user)
+        const userData = { user: { ...this.user, locale: 'es' } }
+        BookService.register(userData)
       }
     },
     getError (vuelidateProperties) {

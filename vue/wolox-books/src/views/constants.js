@@ -1,10 +1,10 @@
 export const fieldsArray = [
   {
-    name: 'firstName',
+    name: 'first_name',
     label: 'First name'
   },
   {
-    name: 'lastName',
+    name: 'last_name',
     label: 'Last name'
   },
   {
@@ -14,6 +14,10 @@ export const fieldsArray = [
   {
     name: 'password',
     label: 'Password'
+  },
+  {
+    name: 'password_confirmation',
+    label: 'Password Confirmation'
   }
 ]
 
