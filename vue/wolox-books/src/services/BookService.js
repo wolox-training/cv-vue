@@ -1,5 +1,5 @@
 import api from '../config/api'
 
 export default {
-  register: body => api.post('api', body)
+  register: body => api.post('', body)
 }
