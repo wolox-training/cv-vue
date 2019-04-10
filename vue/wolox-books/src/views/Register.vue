@@ -13,6 +13,8 @@
           input.input-text-content(:id='field.name' v-model='user[field.name]' )
           p.field-error(v-show='$v.user[field.name].$error')
             |{{ getError($v.user[field.name]) }}
+      p.field-error(v-show='error')
+        |{{ error }}
       button.base-form-button
         |{{ labels.signUp }}
     .container-button
@@ -45,7 +47,8 @@ export default {
   },
   data () {
     return {
-      user: {}
+      user: {},
+      error: ''
     }
   },
   validations: {
@@ -62,7 +65,13 @@ export default {
       this.$v.user.$touch()
       if (!this.$v.user.$error) {
         const userData = { user: { ...this.user, locale: 'es' } }
-        BookService.register(userData)
+        BookService.register(userData).then(response => {
+          if (response.data.error.length) {
+            this.error = response.data.error[0]
+          } else {
+            this.goLogin()
+          }
+        })
       }
     },
     getError (vuelidateProperties) {
