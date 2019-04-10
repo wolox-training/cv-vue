@@ -5,3 +5,15 @@ export const dictionary = {
   PasswordValidator: 'Debe contener un número y una letra mayúscula',
   required: 'Campo requerido'
 }
+
+export const getError = vuelidateProperties => {
+  const fieldsErrors = Object.keys(vuelidateProperties.$params)
+  if (fieldsErrors.length) {
+    for (const fieldError of fieldsErrors) {
+      if (!vuelidateProperties[fieldError]) {
+        console.log(fieldError)
+        return dictionary[fieldError]
+      }
+    }
+  }
+}
