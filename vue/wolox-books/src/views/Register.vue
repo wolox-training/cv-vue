@@ -27,6 +27,7 @@ import { required, minLength, email } from 'vuelidate/lib/validators'
 
 import { PasswordValidator } from '@/utils/customValidator'
 import { dictionary } from '@/utils/generalFunctions'
+import BookService from '@/services/BookService'
 
 import { labels, fieldsArray } from './constants'
 
@@ -58,7 +59,9 @@ export default {
   methods: {
     onSubmit () {
       this.$v.user.$touch()
-      console.log(this.user, 'user info')
+      if (!this.$v.user.$error) {
+        BookService.register(this.user)
+      }
     },
     getError (vuelidateProperties) {
       const fieldsErrors = Object.keys(vuelidateProperties.$params)
