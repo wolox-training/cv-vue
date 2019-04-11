@@ -1,23 +1,23 @@
 <template lang='pug'>
   .register-container
     img.wolox-icon(alt='Wolox logo' src='../assets/wolox_logo.svg')
-    form.form-container(@submit.prevent="onSubmit")
+    form.form-container(@submit.prevent="onSubmit()")
       p.title-form
-        |{{ labels.title }}
+        | {{ labels.title }}
       .input-text-container(
         v-for='(field, index) in fields'
         :class='{ "input-text-error" : $v.user[field.name].$error }'
         :key='index')
           label.input-text-label(:for='field.name')
-            |{{ field.label }}
+            | {{ field.label }}
           input.input-text-content(:id='field.name' v-model='user[field.name]' )
           p.field-error(v-show='$v.user[field.name].$error')
-            |{{ getError($v.user[field.name]) }}
+            | {{ getError($v.user[field.name]) }}
       button.base-form-button
-        |{{ labels.signUp }}
+        | {{ labels.signUp }}
     .container-button
       button.base-form-button.login-button
-        |{{ labels.signIn }}
+        | {{ labels.signIn }}
 </template>
 
 <script>
