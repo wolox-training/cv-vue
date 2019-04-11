@@ -21,11 +21,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import 'src/scss/commons/form';
-  @import 'src/scss/commons/images';
+@import 'src/scss/commons/form';
+@import 'src/scss/commons/images';
 
-  .login-container {
-    display: flex;
-    flex-direction: column;
-  }
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
 </style>

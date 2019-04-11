@@ -1,25 +1,27 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/sign_up">Register</router-link>
-    </div>
-    <router-view/>
-  </div>
+<template lang='pug'>
+  #app
+    .nav
+      router-link.link(to="/login")
+        | Login |
+      router-link.link(to="/sign_up")
+        | Register
+    router-view
 </template>
 
 <style lang="scss">
-  @import 'src/scss/colors';
+@import 'src/scss/colors';
 
-  #nav {
-    padding: 30px;
-    text-align: center;
-    a {
-      color: $pickled-bluewood;
-      font-weight: bold;
-      &.router-link-exact-active {
-        color: $ocean-green;
-      }
+.nav {
+  padding: 30px;
+  text-align: center;
+
+  .link {
+    color: $pickled-bluewood;
+    font-weight: bold;
+
+    &.router-link-exact-active {
+      color: $ocean-green;
     }
   }
+}
 </style>
