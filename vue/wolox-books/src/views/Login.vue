@@ -18,7 +18,7 @@
       button.base-form-button
         | {{ labels.signIn }}
     .container-button
-      button.base-form-button.link-with-pseudo(@click='goSignUp')
+      router-link.base-form-button.link-with-pseudo(to="/signUp")
         | {{ labels.signUp }}
 </template>
 
@@ -55,9 +55,6 @@ export default {
     }
   },
   methods: {
-    goSignUp () {
-      this.$router.push('/sign_up')
-    },
     showError (vueInst) {
       return getError(vueInst)
     },
