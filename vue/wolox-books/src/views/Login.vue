@@ -13,6 +13,8 @@
           input.input-text-content(:id='field.name' v-model='login[field.name]' )
           p.field-error(v-show='$v.login[field.name].$error')
             |{{ showError($v.login[field.name]) }}
+      p.field-error(v-show='error')
+        |{{ error }}
       button.base-form-button
         |{{ labels.signIn }}
     .container-button
@@ -24,6 +26,7 @@
 import { required, email } from 'vuelidate/lib/validators'
 
 import { getError } from '@/utils/generalFunctions'
+import BookService from '@/services/BookService'
 
 import { labels, loginFieldsArray } from './constants'
 
@@ -60,6 +63,17 @@ export default {
     },
     onSubmit () {
       this.$v.login.$touch()
+      if (!this.$v.login.$error) {
+        const loginData = { session: { ...this.login } }
+        BookService.login(loginData)
+          .then(response => {
+            if (response.ok) {
+              console.log(response.data.access_token, 'response')
+            } else {
+              this.error = response.data.error
+            }
+          })
+      }
     }
   }
 }
