@@ -1,25 +1,25 @@
 <template lang='pug'>
   .base-layout-container
     img.wolox-image(alt='Wolox logo' src='../assets/wolox_logo.svg')
-    form.base-form-container(@submit.prevent="onSubmit")
+    form.base-form-container(@submit.prevent="onSubmit()")
       p.base-form-title
-        |{{ labels.title }}
+        | {{ labels.title }}
       .input-text-container(
         v-for='(field, index) in fields'
         :class='{ "input-text-error" : $v.user[field.name].$error }'
         :key='index')
           label.input-text-label(:for='field.name')
-            |{{ field.label }}
+            | {{ field.label }}
           input.input-text-content(:id='field.name' v-model='user[field.name]' )
           p.field-error(v-show='$v.user[field.name].$error')
-            |{{ showError($v.user[field.name]) }}
+            | {{ showError($v.user[field.name]) }}
       p.field-error(v-show='error')
-        |{{ error }}
+        | {{ error }}
       button.base-form-button
-        |{{ labels.signUp }}
+        | {{ labels.signUp }}
     .container-button
-      button.base-form-button.button-with-pseudo(@click='goLogin')
-        |{{ labels.signIn }}
+      router-link.base-form-button.link-with-pseudo(to="/login")
+        | {{ labels.signIn }}
 </template>
 
 <script>
@@ -84,14 +84,14 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-  @import 'src/scss/commons/form';
-  @import 'src/scss/commons/images';
-  @import 'src/scss/commons/input_label_error';
-  @import 'src/scss/commons/buttons';
+@import 'src/scss/commons/form';
+@import 'src/scss/commons/images';
+@import 'src/scss/commons/input_label_error';
+@import 'src/scss/commons/links';
 
-  .container-button {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
+.container-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 </style>

@@ -1,9 +1,12 @@
 @import 'src/scss/colors';
 
-.button-with-pseudo {
+.link-with-pseudo {
+  align-items: center;
   background-color: $wild-sand;
   border: 1px solid $atlantis;
   color: $atlantis;
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
   position: relative;
 
