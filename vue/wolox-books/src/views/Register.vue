@@ -16,7 +16,7 @@
       button.base-form-button
         | {{ labels.signUp }}
     .container-button
-      router-link.base-form-button.login-button
+      button.base-form-button.login-button
         | {{ labels.signIn }}
 </template>
 
