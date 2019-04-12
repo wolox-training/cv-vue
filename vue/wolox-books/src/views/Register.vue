@@ -18,7 +18,7 @@
       button.base-form-button
         | {{ labels.signUp }}
     .container-button
-      router-link.base-form-button.link-with-pseudo(to="/login")
+      router-link.base-form-button.link-form(to="/login")
         | {{ labels.signIn }}
 </template>
 
@@ -27,7 +27,7 @@ import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
 
 import { PasswordValidator } from '@/utils/customValidator'
 import { getError } from '@/utils/generalFunctions'
-import BookService from '@/services/BookService'
+import AuthService from '@/services/AuthService'
 
 import { labels, registerFieldsArray } from './constants'
 
@@ -63,7 +63,7 @@ export default {
       this.$v.user.$touch()
       if (!this.$v.user.$error) {
         const userData = { user: { ...this.user, locale: 'es' } }
-        BookService.register(userData)
+        AuthService.register(userData)
           .then(response => {
             if (response.data.error) {
               this.error = response.data.error[0]
