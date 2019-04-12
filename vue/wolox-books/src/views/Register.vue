@@ -59,13 +59,9 @@ export default {
       console.log(this.user, 'user info')
     },
     getError (vuelidateProperties) {
-      const fieldsErrors = Object.keys(vuelidateProperties.$params)
-      if (fieldsErrors.length) {
-        for (const fieldError of fieldsErrors) {
-          if (!vuelidateProperties[fieldError]) {
-            return dictionary[fieldError]
-          }
-        }
+      if (vuelidateProperties.$params) {
+        const foundError = Object.keys(vuelidateProperties.$params).find(element => !vuelidateProperties[element])
+        return dictionary[foundError]
       }
     }
   }
