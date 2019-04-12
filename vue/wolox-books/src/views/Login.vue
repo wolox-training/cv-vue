@@ -3,20 +3,15 @@
     img.wolox-image(alt='Wolox logo' src='../assets/wolox_logo.svg')
     .base-form-container
       h1.base-form-title
-        |Login
-      button.base-form-button(@click='goSignUp')
-        |Sign up
+        | Login
+      router-link.base-form-button.link-sign-up(to='/sign_up')
+        | Sign up
 </template>
 
 <script>
 
 export default {
-  name: 'login',
-  methods: {
-    goSignUp () {
-      this.$router.push('/sign_up')
-    }
-  }
+  name: 'login'
 }
 </script>
 
@@ -27,5 +22,11 @@ export default {
 .login-container {
   display: flex;
   flex-direction: column;
+}
+
+.link-sign-up {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 </style>
