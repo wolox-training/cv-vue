@@ -1,13 +1,18 @@
 <template lang='pug'>
   .register-container
-    img.wolox-icon(alt='Vue logo' src='../assets/wolox_logo.svg')
+    img.wolox-icon(alt='Wolox logo' src='../assets/wolox_logo.svg')
     form.form-container(@submit.prevent="onSubmit()")
       p.title-form
-        | {{labels.title}}
-      .input-text-container(v-for='(field, index) in fields' :key='index')
-        label.input-text-label(:for='field.name')
-          | {{ field.label }}
-        input.input-text-content(:id='field.name' v-model='user[field.name]' )
+        | {{ labels.title }}
+      .input-text-container(
+        v-for='(field, index) in fields'
+        :class='{ "input-text-error" : $v.user[field.name].$error }'
+        :key='index')
+          label.input-text-label(:for='field.name')
+            | {{ field.label }}
+          input.input-text-content(:id='field.name' v-model='user[field.name]' )
+          p.field-error(v-show='$v.user[field.name].$error')
+            | {{ getError($v.user[field.name]) }}
       button.base-form-button
         | {{ labels.signUp }}
     .container-button
@@ -16,6 +21,11 @@
 </template>
 
 <script>
+import { required, minLength, email } from 'vuelidate/lib/validators'
+
+import { PasswordValidator } from '@/utils/customValidator'
+import { dictionary } from '@/utils/generalFunctions'
+
 import { labels, fieldsArray } from './constants'
 
 export default {
@@ -35,9 +45,24 @@ export default {
       user: {}
     }
   },
+  validations: {
+    user: {
+      firstName: { required, min: minLength(10) },
+      lastName: { required },
+      email: { required, email },
+      password: { required, PasswordValidator }
+    }
+  },
   methods: {
     onSubmit () {
+      this.$v.user.$touch()
       console.log(this.user, 'user info')
+    },
+    getError (vuelidateProperties) {
+      if (vuelidateProperties.$params) {
+        const foundError = Object.keys(vuelidateProperties.$params).find(element => !vuelidateProperties[element])
+        return dictionary[foundError]
+      }
     }
   }
 }
@@ -134,4 +159,19 @@ export default {
     }
   }
 
+  .input-text-error {
+    .input-text-label {
+      color: $torch-red;
+    }
+
+    .input-text-content {
+      border: 0.5px solid $torch-red;
+    }
+  }
+
+  .field-error {
+    color: $torch-red;
+    font-size: $field-error;
+    margin-left: 15px;
+  }
 </style>
