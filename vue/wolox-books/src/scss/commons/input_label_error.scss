@@ -1,0 +1,43 @@
+@import 'src/scss/colors';
+@import 'src/scss/fonts';
+
+.input-text-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 70px;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+.input-text-label {
+  align-self: flex-start;
+  color: $cod-gray;
+  font-size: $input-text;
+  font-weight: 500;
+  padding: 0 30px;
+}
+
+.input-text-content {
+  border-radius: 10px;
+  height: 40px;
+  max-width: 350px;
+  padding: 0 5px;
+  width: 100%;
+}
+
+.field-error {
+  color: $torch-red;
+  font-size: $field-error;
+  margin-left: 15px;
+}
+
+.input-text-error {
+  .input-text-label {
+    color: $torch-red;
+  }
+
+  .input-text-content {
+    border: 0.5px solid $torch-red;
+  }
+}

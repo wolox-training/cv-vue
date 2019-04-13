@@ -1,0 +1,22 @@
+@import 'src/scss/colors';
+
+.link-form {
+  align-items: center;
+  background-color: $wild-sand;
+  border: 1px solid $atlantis;
+  color: $atlantis;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+
+  &::before {
+    background-color: $alto;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    top: -20px;
+    width: 100%;
+  }
+}

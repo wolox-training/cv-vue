@@ -12,13 +12,13 @@
             | {{ field.label }}
           input.input-text-content(:id='field.name' v-model='user[field.name]' )
           p.field-error(v-show='$v.user[field.name].$error')
-            | {{ getError($v.user[field.name]) }}
+            | {{ showError($v.user[field.name]) }}
       p.field-error(v-show='error')
         | {{ error }}
       button.base-form-button
         | {{ labels.signUp }}
     .container-button
-      router-link.base-form-button.login-button(to="/login")
+      router-link.base-form-button.link-form(to="/login")
         | {{ labels.signIn }}
 </template>
 
@@ -26,17 +26,17 @@
 import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
 
 import { PasswordValidator } from '@/utils/customValidator'
-import { dictionary } from '@/utils/generalFunctions'
-import BookService from '@/services/BookService'
+import { getError } from '@/utils/generalFunctions'
+import AuthService from '@/services/AuthService'
 
-import { labels, fieldsArray } from './constants'
+import { labels, registerFieldsArray } from './constants'
 
 export default {
   name: 'register',
   props: {
     fields: {
       type: Array,
-      default: () => fieldsArray
+      default: () => registerFieldsArray
     },
     labels: {
       type: Object,
@@ -63,20 +63,18 @@ export default {
       this.$v.user.$touch()
       if (!this.$v.user.$error) {
         const userData = { user: { ...this.user, locale: 'es' } }
-        BookService.register(userData).then(response => {
-          if (response.data.error) {
-            this.error = response.data.error[0]
-          } else {
-            this.goLogin()
-          }
-        })
+        AuthService.register(userData)
+          .then(response => {
+            if (response.data.error) {
+              this.error = response.data.error[0]
+            } else {
+              this.goLogin()
+            }
+          })
       }
     },
-    getError (vuelidateProperties) {
-      if (vuelidateProperties.$params) {
-        const foundError = Object.keys(vuelidateProperties.$params).find(element => !vuelidateProperties[element])
-        return dictionary[foundError]
-      }
+    showError (vueInst) {
+      return getError(vueInst)
     },
     goLogin () {
       this.$router.push('/login')
@@ -86,73 +84,14 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-@import 'src/scss/colors';
-@import 'src/scss/fonts';
 @import 'src/scss/commons/form';
 @import 'src/scss/commons/images';
-
-.input-text-container {
-  display: flex;
-  flex-direction: column;
-  height: 70px;
-  justify-content: space-around;
-  margin: 10px auto;
-}
-
-.input-text-label {
-  color: $cod-gray;
-  font-size: $input-text;
-  font-weight: 500;
-  margin-left: 10px;
-}
-
-.input-text-content {
-  border-radius: 10px;
-  height: 40px;
-  padding: 0 5px;
-  width: 350px;
-}
+@import 'src/scss/commons/input_label_error';
+@import 'src/scss/commons/links';
 
 .container-button {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-}
-
-.login-button {
-  align-items: center;
-  background-color: $wild-sand;
-  border: 1px solid $atlantis;
-  color: $atlantis;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  position: relative;
-
-  &::before {
-    background-color: $alto;
-    content: '';
-    height: 2px;
-    left: 0;
-    position: absolute;
-    top: -20px;
-    width: 100%;
-  }
-}
-
-.input-text-error {
-  .input-text-label {
-    color: $torch-red;
-  }
-
-  .input-text-content {
-    border: 0.5px solid $torch-red;
-  }
-}
-
-.field-error {
-  color: $torch-red;
-  font-size: $field-error;
-  margin-left: 15px;
 }
 </style>

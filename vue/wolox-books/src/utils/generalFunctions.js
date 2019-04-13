@@ -1,7 +1,15 @@
 export const dictionary = {
-  email: 'Debe ser un correo electrónico',
-  min: 'No cumple con el mínimo de caracteres',
-  sameAsPassword: 'El valor no coincide con el password',
-  PasswordValidator: 'Debe contener un número y una letra mayúscula',
-  required: 'Campo requerido'
+  email: 'It must be an email',
+  min: 'Does not comply with the minimum of characters',
+  sameAsPassword: 'The value does not match the password',
+  PasswordValidator: 'It must contain a number and a capital letter',
+  required: 'Required field',
+  loginFailed: 'Incorrect email or password'
+}
+
+export const getError = vuelidateProperties => {
+  if (vuelidateProperties.$params) {
+    const foundError = Object.keys(vuelidateProperties.$params).find(element => !vuelidateProperties[element])
+    return dictionary[foundError]
+  }
 }
