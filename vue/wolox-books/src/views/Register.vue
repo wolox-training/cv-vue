@@ -1,8 +1,8 @@
 <template lang='pug'>
-  .register-container
-    img.wolox-icon(alt='Wolox logo' src='../assets/wolox_logo.svg')
-    form.form-container(@submit.prevent="onSubmit()")
-      p.title-form
+  .base-layout-container
+    img.wolox-image(alt='Wolox logo' src='../assets/wolox_logo.svg')
+    form.base-form-container(@submit.prevent="onSubmit()")
+      p.base-form-title
         | {{ labels.title }}
       .input-text-container(
         v-for='(field, index) in fields'
@@ -13,10 +13,12 @@
           input.input-text-content(:id='field.name' v-model='user[field.name]' )
           p.field-error(v-show='$v.user[field.name].$error')
             | {{ getError($v.user[field.name]) }}
+      p.field-error(v-show='error')
+        | {{ error }}
       button.base-form-button
         | {{ labels.signUp }}
     .container-button
-      button.base-form-button.login-button
+      router-link.base-form-button.login-button(to="/login")
         | {{ labels.signIn }}
 </template>
 
@@ -43,7 +45,8 @@ export default {
   },
   data () {
     return {
-      user: {}
+      user: {},
+      error: ''
     }
   },
   validations: {
@@ -60,7 +63,13 @@ export default {
       this.$v.user.$touch()
       if (!this.$v.user.$error) {
         const userData = { user: { ...this.user, locale: 'es' } }
-        BookService.register(userData)
+        BookService.register(userData).then(response => {
+          if (response.data.error) {
+            this.error = response.data.error[0]
+          } else {
+            this.goLogin()
+          }
+        })
       }
     },
     getError (vuelidateProperties) {
@@ -68,115 +77,82 @@ export default {
         const foundError = Object.keys(vuelidateProperties.$params).find(element => !vuelidateProperties[element])
         return dictionary[foundError]
       }
+    },
+    goLogin () {
+      this.$router.push('/login')
     }
   }
 }
 </script>
 
 <style scoped lang='scss'>
-  @import 'src/scss/colors';
-  @import 'src/scss/fonts';
+@import 'src/scss/colors';
+@import 'src/scss/fonts';
+@import 'src/scss/commons/form';
+@import 'src/scss/commons/images';
 
-  .register-container {
-    background-color: $wild-sand;
-    border-top: 5px solid $cerulean;
-    margin: 50px auto;
-    max-width: 400px;
+.input-text-container {
+  display: flex;
+  flex-direction: column;
+  height: 70px;
+  justify-content: space-around;
+  margin: 10px auto;
+}
+
+.input-text-label {
+  color: $cod-gray;
+  font-size: $input-text;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.input-text-content {
+  border-radius: 10px;
+  height: 40px;
+  padding: 0 5px;
+  width: 350px;
+}
+
+.container-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.login-button {
+  align-items: center;
+  background-color: $wild-sand;
+  border: 1px solid $atlantis;
+  color: $atlantis;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+
+  &::before {
+    background-color: $alto;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    top: -20px;
     width: 100%;
   }
+}
 
-  .wolox-icon {
-    margin: 35px 30px 10px;
-  }
-
-  .title-form {
-    color: $black;
-    font-size: $title-form;
-    font-weight: bold;
-    letter-spacing: 5px;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin-bottom: 20px;
-    max-height: 600px;
-    width: 100%;
-  }
-
-  .input-text-container {
-    display: flex;
-    flex-direction: column;
-    height: 70px;
-    justify-content: space-around;
-    margin: 10px auto;
-  }
-
+.input-text-error {
   .input-text-label {
-    color: $cod-gray;
-    font-size: $input-text;
-    font-weight: 500;
-    margin-left: 10px;
+    color: $torch-red;
   }
 
   .input-text-content {
-    border-radius: 10px;
-    height: 40px;
-    padding: 0 5px;
-    width: 350px;
+    border: 0.5px solid $torch-red;
   }
+}
 
-  .container-button {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-
-  .base-form-button {
-    background-color: $atlantis;
-    border-radius: 8px;
-    color: $white;
-    font-size: $main-button;
-    height: 45px;
-    margin: 10px auto;
-    max-width: 350px;
-    width: 100%;
-  }
-
-  .login-button {
-    background-color: $wild-sand;
-    border: 1px solid $atlantis;
-    color: $atlantis;
-    margin-bottom: 20px;
-    position: relative;
-
-    &::before {
-      background-color: $alto;
-      content: '';
-      height: 2px;
-      left: 0;
-      position: absolute;
-      top: -20px;
-      width: 100%;
-    }
-  }
-
-  .input-text-error {
-    .input-text-label {
-      color: $torch-red;
-    }
-
-    .input-text-content {
-      border: 0.5px solid $torch-red;
-    }
-  }
-
-  .field-error {
-    color: $torch-red;
-    font-size: $field-error;
-    margin-left: 15px;
-  }
+.field-error {
+  color: $torch-red;
+  font-size: $field-error;
+  margin-left: 15px;
+}
 </style>

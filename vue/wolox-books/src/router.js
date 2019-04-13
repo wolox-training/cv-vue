@@ -5,10 +5,16 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    { path: '/', redirect: '/login' },
     {
-      path: '/',
-      name: 'register',
-      component: () => import(/* webpackChunkName: "register" */ './views/Register.vue')
+      path: '/sign_up',
+      name: 'sign_up',
+      component: () => import(/* webpackChunkName: "sign_up" */ './views/Register.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
     }
   ]
 })
