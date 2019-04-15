@@ -5,16 +5,25 @@
         img.wolox-icon-small(src='../assets/wolox_logo.svg' alt='Wolox logo')
         p.icon-title
           | BOOKS
-      router-ling(to='/login' class='logout' v-on:click='logout()')
+      a.logout(@click='logout()')
         | Logout
 </template>
 
 <script>
+import ROUTES from '../routes'
+
 export default {
   name: 'navbar',
+  props: {
+    ROUTES: {
+      type: Object,
+      default: () => ROUTES
+    }
+  },
   methods: {
     logout () {
       window.localStorage.removeItem('token')
+      this.$router.push(ROUTES.LOGIN)
     }
   }
 }

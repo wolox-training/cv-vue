@@ -18,7 +18,7 @@
       button.base-form-button
         | {{ labels.signUp }}
     .container-button
-      router-link.base-form-button.link-form(to="/login")
+      router-link.base-form-button.link-form(:to='ROUTES.LOGIN')
         | {{ labels.signIn }}
 </template>
 
@@ -30,6 +30,7 @@ import { getError } from '@/utils/generalFunctions'
 import AuthService from '@/services/AuthService'
 
 import { labels, registerFieldsArray } from './constants'
+import ROUTES from '../routes'
 
 export default {
   name: 'register',
@@ -41,6 +42,10 @@ export default {
     labels: {
       type: Object,
       default: () => labels
+    },
+    ROUTES: {
+      type: Object,
+      default: () => ROUTES
     }
   },
   data () {
@@ -78,7 +83,7 @@ export default {
       return getError(vueInst)
     },
     goLogin () {
-      this.$router.push('/login')
+      this.$router.push(ROUTES.LOGIN)
     }
   }
 }

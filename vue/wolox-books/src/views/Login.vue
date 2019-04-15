@@ -18,7 +18,7 @@
       button.base-form-button
         | {{ labels.signIn }}
     .container-button
-      router-link.base-form-button.link-form(to="/sign_up")
+      router-link.base-form-button.link-form(:to='ROUTES.SIGN_UP')
         | {{ labels.signUp }}
 </template>
 
@@ -29,6 +29,7 @@ import { getError } from '@/utils/generalFunctions'
 import AuthService from '@/services/AuthService'
 
 import { labels, loginFieldsArray } from './constants'
+import ROUTES from '../routes'
 
 export default {
   name: 'login',
@@ -40,6 +41,10 @@ export default {
     labels: {
       type: Object,
       default: () => labels
+    },
+    ROUTES: {
+      type: Object,
+      default: () => ROUTES
     }
   },
   data () {
@@ -66,8 +71,7 @@ export default {
           .then(response => {
             if (response.ok) {
               window.localStorage.setItem('token', response.data.access_token)
-              this.$router.push('/')
-              console.log(this.$router, 'router')
+              this.$router.push(ROUTES.HOME)
             } else {
               this.error = response.data.error
             }
