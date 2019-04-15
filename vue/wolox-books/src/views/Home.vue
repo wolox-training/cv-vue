@@ -5,13 +5,18 @@
         img.wolox-icon-small(src='../assets/wolox_logo.svg' alt='Wolox logo')
         p.icon-title
           | BOOKS
-      span.logout
+      router-ling(to='/login' class='logout' v-on:click='logout()')
         | Logout
 </template>
 
 <script>
 export default {
-  name: 'navbar'
+  name: 'navbar',
+  methods: {
+    logout () {
+      window.localStorage.removeItem('token')
+    }
+  }
 }
 </script>
 

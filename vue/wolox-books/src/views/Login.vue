@@ -65,7 +65,9 @@ export default {
         AuthService.login(loginData)
           .then(response => {
             if (response.ok) {
-              console.log(response.data.access_token, 'response')
+              window.localStorage.setItem('token', response.data.access_token)
+              this.$router.push('/')
+              console.log(this.$router, 'router')
             } else {
               this.error = response.data.error
             }
@@ -87,4 +89,5 @@ export default {
   justify-content: center;
   margin-top: 20px;
 }
+
 </style>

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -19,6 +19,23 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const token = window.localStorage.getItem('token')
+  if (to.fullPath === '/login' || to.fullPath === '/sign_up') {
+    next()
+  } else if (!token) {
+    next('/login')
+  } else {
+    next()
+  }
+})
+
+export default router

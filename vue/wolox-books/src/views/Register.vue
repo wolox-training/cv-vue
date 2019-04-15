@@ -68,6 +68,7 @@ export default {
             if (response.data.error) {
               this.error = response.data.error[0]
             } else {
+              window.localStorage.setItem('token', response.data.acccess_token)
               this.goLogin()
             }
           })
@@ -94,4 +95,5 @@ export default {
   justify-content: center;
   margin-top: 20px;
 }
+
 </style>
