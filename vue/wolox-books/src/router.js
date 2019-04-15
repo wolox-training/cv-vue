@@ -5,7 +5,11 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/', redirect: '/login' },
+    {
+      path: '/',
+      name: 'home',
+      component: () => import(/* webpackChunkName: "home" */ './views/Home.vue')
+    },
     {
       path: '/sign_up',
       name: 'sign_up',
