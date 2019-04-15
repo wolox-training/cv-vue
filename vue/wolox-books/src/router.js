@@ -30,13 +30,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   const token = window.localStorage.getItem('token')
-  if (to.fullPath === ROUTES.LOGIN || to.fullPath === ROUTES.SIGN_UP) {
-    next()
-  } else if (!token) {
-    next(ROUTES.LOGIN)
-  } else {
-    next()
-  }
+  to.fullPath === ROUTES.LOGIN || to.fullPath === ROUTES.SIGN_UP ? next() : !token ? next(ROUTES.LOGIN) : next()
 })
 
 export default router
