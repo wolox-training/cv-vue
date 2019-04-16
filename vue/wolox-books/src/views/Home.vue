@@ -17,24 +17,24 @@
 </template>
 
 <script>
-import BookService from '@/services/BookService'
+import { mapState } from 'vuex'
 import { removeToken } from '@/services/LocalStorageService'
 
-import routes from '../routes'
+import store from '@/store'
+import routes from '@/routes'
 
 export default {
   name: 'navbar',
+  store,
   props: {
     routes: {
       type: Object,
       default: () => routes
     }
   },
-  data () {
-    return {
-      books: []
-    }
-  },
+  computed: mapState({
+    books: state => state.books
+  }),
   methods: {
     logout () {
       removeToken()
@@ -42,13 +42,7 @@ export default {
     }
   },
   created () {
-    BookService.getBooks()
-      .then(res => {
-        this.books = res.data
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    this.$store.dispatch('getBooks')
   }
 }
 </script>
