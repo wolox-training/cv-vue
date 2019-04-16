@@ -9,10 +9,10 @@
         | Logout
     .books-container
       .book(v-for='book of books' :key='book.id')
-        img.cover-book(:src='book.image_url' :alt='book.title')
-        h4.title-book
+        img.book-cover(:src='book.image_url' :alt='book.title')
+        h4.book-title
           | {{ book.title }}
-        span.author-book
+        span.book-author
           | {{ book.author }}
 </template>
 
@@ -44,7 +44,6 @@ export default {
   created () {
     BookService.getBooks()
       .then(res => {
-        console.log(res)
         this.books = res.data
       })
       .catch(err => {
@@ -58,6 +57,7 @@ export default {
 @import 'src/scss/colors';
 @import 'src/scss/fonts';
 @import 'src/scss/commons/images';
+@import 'src/scss/commons/book';
 
 .navbar-container {
   align-items: center;
@@ -101,38 +101,5 @@ export default {
   margin: 40px auto;
   max-width: 1100px;
   widows: 100%;
-}
-
-.book {
-  background-color: $white;
-  box-shadow: 4px 4px 4px $box-shadow-books;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  margin: 10px;
-  max-height: 235px;
-  max-width: 200px;
-  padding: 20px;
-  width: 100%;
-}
-
-.cover-book {
-  background-color: $gallery;
-  height: 100%;
-  margin-bottom: 15px;
-  max-width: 160px;
-  min-height: 140px;
-  width: 100%;
-}
-
-.title-book {
-  color: $black;
-  font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.author-book {
-  font-size: 10px;
 }
 </style>
