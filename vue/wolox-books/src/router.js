@@ -23,6 +23,11 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
     },
     {
+      path: routes.book,
+      name: 'book',
+      component: () => import(/* webpackChunkName: "book" */ './views/Book.vue')
+    },
+    {
       path: '*',
       redirect: routes.home
     }

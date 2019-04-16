@@ -1,5 +1,5 @@
 <template lang="pug">
-  .home-container
+  .book-container
     .navbar-container
       .icon-container
         img.wolox-icon-small(src='../assets/wolox_logo.svg' alt='Wolox logo')
@@ -7,17 +7,10 @@
           | {{ labels.title }}
       button.logout(@click='logout()')
         | {{ labels.logout }}
-    .books-container
-      .book(v-for='book of books' :key='book.id')
-        img.book-cover(:src='book.image_url' :alt='book.title')
-        h4.book-title
-          | {{ book.title }}
-        span.book-author
-          | {{ book.author }}
+    .detail-container
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import { removeToken } from '@/services/LocalStorageService'
 import store from '@/store'
 import routes from '@/routes'
@@ -25,7 +18,7 @@ import routes from '@/routes'
 import { labels } from './constants'
 
 export default {
-  name: 'navbar',
+  name: 'details-book',
   store,
   props: {
     routes: {
@@ -37,9 +30,6 @@ export default {
       default: () => labels
     }
   },
-  computed: mapState({
-    books: state => state.books
-  }),
   methods: {
     logout () {
       removeToken()
@@ -47,7 +37,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('getBooks')
+    this.$store.dispatch('getBookById')
   }
 }
 </script>
@@ -58,13 +48,13 @@ export default {
 @import 'src/scss/commons/book';
 @import 'src/scss/commons/navbar';
 
-.home-container {
+.book-container {
   background-color: $wild-sand;
   height: 100%;
   width: 100%;
 }
 
-.books-container {
+.book-detail-container {
   display: flex;
   flex-wrap: wrap;
   height: 100%;

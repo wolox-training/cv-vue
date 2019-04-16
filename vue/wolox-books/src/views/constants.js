@@ -35,5 +35,6 @@ export const loginFieldsArray = [
 export const labels = {
   title: 'BOOKS',
   signUp: 'Sign up',
-  signIn: 'Login'
+  signIn: 'Login',
+  logout: 'Logout'
 }
