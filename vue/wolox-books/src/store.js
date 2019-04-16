@@ -7,11 +7,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    books: []
+    books: [],
+    seletedBook: {}
   },
   mutations: {
     setBooks (state, payload) {
       state.books = payload
+    },
+    setSelectedBook (state, payload) {
+      state.seletedBook = payload
     }
   },
   actions: {
@@ -20,6 +24,12 @@ export default new Vuex.Store({
         .then(res =>
           commit('setBooks', res.data)
         )
+    },
+    getBookById ({ commit }, id) {
+      console.log(id, 'id')
+      BookService.getBookByID(id).then(res =>
+        commit('setSelectedBook', res.data)
+      )
     }
   }
 })

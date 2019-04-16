@@ -20,6 +20,11 @@ import { labels } from './constants'
 export default {
   name: 'details-book',
   store,
+  computed: {
+    id () {
+      return this.$route.params.id
+    }
+  },
   props: {
     routes: {
       type: Object,
@@ -37,7 +42,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('getBookById')
+    this.$store.dispatch('getBookById', this.id)
   }
 }
 </script>

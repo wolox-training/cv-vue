@@ -7,5 +7,6 @@ if (token) {
 }
 
 export default {
-  getBooks: () => api.get('/books')
+  getBooks: () => api.get('/books'),
+  getBookByID: id => api.get(`/books/${id}`)
 }
