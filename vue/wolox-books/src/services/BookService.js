@@ -1,7 +1,8 @@
 import api from '../config/api'
+import { getToken } from '../services/LocalStorageService'
 
 (() => {
-  const token = window.localStorage.getItem('token')
+  const token = getToken()
   token &&
     api.setHeader('Authorization', token)
 })()

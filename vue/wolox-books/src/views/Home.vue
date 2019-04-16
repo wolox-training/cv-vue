@@ -5,7 +5,7 @@
         img.wolox-icon-small(src='../assets/wolox_logo.svg' alt='Wolox logo')
         p.icon-title
           | BOOKS
-      a.logout(@click='logout()')
+      button.logout(@click='logout()')
         | Logout
     .books-container
       .book(v-for='book of books' :key='book.id')
@@ -18,14 +18,16 @@
 
 <script>
 import BookService from '@/services/BookService'
-import ROUTES from '../routes'
+import { removeToken } from '@/services/LocalStorageService'
+
+import routes from '../routes'
 
 export default {
   name: 'navbar',
   props: {
-    ROUTES: {
+    routes: {
       type: Object,
-      default: () => ROUTES
+      default: () => routes
     }
   },
   data () {
@@ -35,8 +37,8 @@ export default {
   },
   methods: {
     logout () {
-      window.localStorage.removeItem('token')
-      this.$router.push(ROUTES.LOGIN)
+      removeToken()
+      this.$router.push(routes.login)
     }
   },
   created () {
@@ -133,5 +135,4 @@ export default {
 .author-book {
   font-size: 10px;
 }
-
 </style>
