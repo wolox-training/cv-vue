@@ -108,7 +108,7 @@ export default {
   flex-direction: column;
   height: 100%;
   margin: 10px;
-  max-height: 240px;
+  max-height: 235px;
   max-width: 200px;
   padding: 20px;
   width: 100%;
@@ -118,8 +118,8 @@ export default {
   background-color: $gallery;
   height: 100%;
   margin-bottom: 15px;
-  max-height: 140px;
   max-width: 160px;
+  min-height: 140px;
   width: 100%;
 }
 
