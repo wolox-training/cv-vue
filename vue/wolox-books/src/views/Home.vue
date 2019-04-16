@@ -7,9 +7,17 @@
           | BOOKS
       a.logout(@click='logout()')
         | Logout
+    .books-container
+      .book(v-for='book of books' :key='book.id')
+        img.cover-book(:src='book.image_url' :alt='book.title')
+        h4.title-book
+          | {{ book.title }}
+        span.author-book
+          | {{ book.author }}
 </template>
 
 <script>
+import BookService from '@/services/BookService'
 import ROUTES from '../routes'
 
 export default {
@@ -20,11 +28,26 @@ export default {
       default: () => ROUTES
     }
   },
+  data () {
+    return {
+      books: []
+    }
+  },
   methods: {
     logout () {
       window.localStorage.removeItem('token')
       this.$router.push(ROUTES.LOGIN)
     }
+  },
+  created () {
+    BookService.getBooks()
+      .then(res => {
+        console.log(res)
+        this.books = res.data
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 }
 </script>
@@ -65,8 +88,50 @@ export default {
 
 .home-container {
   background-color: $wild-sand;
-  height: 100vh;
+  height: 100%;
   width: 100%;
+}
+
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  margin: 40px auto;
+  max-width: 1100px;
+  widows: 100%;
+}
+
+.book {
+  background-color: $white;
+  box-shadow: 4px 4px 4px $box-shadow-books;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 10px;
+  max-height: 240px;
+  max-width: 200px;
+  padding: 20px;
+  width: 100%;
+}
+
+.cover-book {
+  background-color: $gallery;
+  height: 100%;
+  margin-bottom: 15px;
+  max-height: 140px;
+  max-width: 160px;
+  width: 100%;
+}
+
+.title-book {
+  color: $black;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.author-book {
+  font-size: 10px;
 }
 
 </style>
