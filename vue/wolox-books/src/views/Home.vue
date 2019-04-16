@@ -5,25 +5,27 @@
         img.wolox-icon-small(src='../assets/wolox_logo.svg' alt='Wolox logo')
         p.icon-title
           | BOOKS
-      a.logout(@click='logout()')
+      button.logout(@click='logout()')
         | Logout
 </template>
 
 <script>
-import ROUTES from '../routes'
+import { removeToken } from '@/services/LocalStorageService'
+
+import routes from '../routes'
 
 export default {
   name: 'navbar',
   props: {
-    ROUTES: {
+    routes: {
       type: Object,
-      default: () => ROUTES
+      default: () => routes
     }
   },
   methods: {
     logout () {
-      window.localStorage.removeItem('token')
-      this.$router.push(ROUTES.LOGIN)
+      removeToken()
+      this.$router.push(routes.login)
     }
   }
 }
@@ -68,5 +70,4 @@ export default {
   height: 100vh;
   width: 100%;
 }
-
 </style>

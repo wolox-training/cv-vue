@@ -18,7 +18,7 @@
       button.base-form-button
         | {{ labels.signIn }}
     .container-button
-      router-link.base-form-button.link-form(:to='ROUTES.SIGN_UP')
+      router-link.base-form-button.link-form(:to='routes.sign_up')
         | {{ labels.signUp }}
 </template>
 
@@ -27,9 +27,10 @@ import { required, email } from 'vuelidate/lib/validators'
 
 import { getError } from '@/utils/generalFunctions'
 import AuthService from '@/services/AuthService'
+import { setToken } from '@/services/LocalStorageService'
 
 import { labels, loginFieldsArray } from './constants'
-import ROUTES from '../routes'
+import routes from '../routes'
 
 export default {
   name: 'login',
@@ -42,9 +43,9 @@ export default {
       type: Object,
       default: () => labels
     },
-    ROUTES: {
+    routes: {
       type: Object,
-      default: () => ROUTES
+      default: () => routes
     }
   },
   data () {
@@ -70,8 +71,8 @@ export default {
         AuthService.login(loginData)
           .then(response => {
             if (response.ok) {
-              window.localStorage.setItem('token', response.data.access_token)
-              this.$router.push(ROUTES.HOME)
+              setToken(response.data.access_token)
+              this.$router.push(routes.home)
             } else {
               this.error = response.data.error
             }
@@ -93,5 +94,4 @@ export default {
   justify-content: center;
   margin-top: 20px;
 }
-
 </style>
