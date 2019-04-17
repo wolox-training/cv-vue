@@ -135,7 +135,7 @@ export default {
 .genre {
   font-size: $detail-genre;
   line-height: 1;
-  padding-left: 30px;
+  padding-left: 10px;
 }
 
 .item {

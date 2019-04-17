@@ -8,7 +8,12 @@
       button.logout(@click='logout()')
         | {{ labels.logout }}
     .books-container
-      .book(v-for='book of books' :key='book.id')
+      router-link(
+        v-for='book of books'
+        :to='{ path: `${routes.book}/${book.id}`}'
+        :key='book.id'
+        class='book'
+      )
         img.book-cover(:src='book.image_url' :alt='book.title')
         h4.book-title
           | {{ book.title }}
