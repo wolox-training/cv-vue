@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routes'
-import { getToken } from './services/LocalStorageService'
+import { getToken, removeToken } from './services/LocalStorageService'
 
 Vue.use(Router)
 
@@ -32,7 +32,11 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   const token = getToken()
   if (to.fullPath === routes.login || to.fullPath === routes.sign_up) {
-    next()
+    if (token) {
+      next(routes.home)
+    } else {
+      next()
+    }
   } else if (!token) {
     next(routes.login)
   } else {
