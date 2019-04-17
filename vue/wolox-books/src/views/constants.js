@@ -39,8 +39,17 @@ export const labels = {
   logout: 'Logout'
 }
 
-export const detailsBook = {
-  author: 'Book author',
-  publisher: 'Publisher',
-  year: 'Year of publication'
-}
+export const detailsBook = [
+  {
+    name: 'author',
+    value: 'Book author'
+  },
+  {
+    name: 'publisher',
+    value: 'Publisher'
+  },
+  {
+    name: 'year',
+    value: 'Year of publication'
+  }
+]

@@ -16,20 +16,11 @@
           span.genre
            | ({{ selectedBook.genre }})
         .other-details
-          h4.item
-            | {{ detailsBook.author }}:
-          span.value
-            | {{ selectedBook.author }}
-          br
-          h4.item
-            | {{ detailsBook.publisher }}:
-          span.value
-            | {{ selectedBook.publisher }}
-          br
-          h4.item
-            | {{ detailsBook.year }}:
-          span.value
-            | {{ selectedBook.year }}
+          .detail(v-for='detail of detailsBook')
+            h4.item
+              | {{ detail.value }}:
+            span.value
+              | {{ selectedBook[detail.name] }}
 
 </template>
 
@@ -57,7 +48,7 @@ export default {
       default: () => labels
     },
     detailsBook: {
-      type: Object,
+      type: Array,
       default: () => detailsBook
     }
   },
@@ -136,6 +127,11 @@ export default {
   font-size: $detail-genre;
   line-height: 1;
   padding-left: 10px;
+}
+
+.other-details {
+  display: flex;
+  flex-direction: column;
 }
 
 .item {
