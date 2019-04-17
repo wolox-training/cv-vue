@@ -3,7 +3,7 @@
     img.wolox-image(alt='Wolox logo' src='../assets/wolox_logo.svg')
     form.base-form-container(@submit.prevent="onSubmit()")
       p.base-form-title
-        | {{ labels.title }}
+        | {{ $t('app.title') }}
       .input-text-container(
         v-for='(field, index) in fields'
         :class='{ "input-text-error" : $v.login[field.name].$error }'
@@ -16,10 +16,10 @@
       p.field-error(v-show='error')
         | {{ error }}
       button.base-form-button
-        | {{ labels.signIn }}
+        | {{ $t('app.signIn') }}
     .container-button
       router-link.base-form-button.link-form(:to='routes.sign_up')
-        | {{ labels.signUp }}
+        | {{ $t('app.signUp') }}
 </template>
 
 <script>
@@ -29,7 +29,7 @@ import { getError } from '@/utils/generalFunctions'
 import AuthService from '@/services/AuthService'
 import { setToken } from '@/services/LocalStorageService'
 
-import { labels, loginFieldsArray } from './constants'
+import { loginFieldsArray } from './constants'
 import routes from '../routes'
 
 export default {
@@ -38,10 +38,6 @@ export default {
     fields: {
       type: Array,
       default: () => loginFieldsArray
-    },
-    labels: {
-      type: Object,
-      default: () => labels
     },
     routes: {
       type: Object,

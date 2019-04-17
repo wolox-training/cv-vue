@@ -4,9 +4,9 @@
       .icon-container
         img.wolox-icon-small(src='../assets/wolox_logo.svg' alt='Wolox logo')
         p.icon-title
-          | {{ labels.title }}
+          | {{ $t('app.title') }}
       button.logout(@click='logout()')
-        | {{ labels.logout }}
+        | {{ $t('app.logout') }}
     .detail-container
       img.detail-cover(:src='selectedBook.image_url' :alt='selectedBook.title')
       .detail-book
@@ -30,7 +30,7 @@ import { removeToken } from '@/services/LocalStorageService'
 import store from '@/store'
 import routes from '@/routes'
 
-import { labels, detailsBook } from './constants'
+import { detailsBook } from './constants'
 
 export default {
   name: 'details-book',
@@ -42,10 +42,6 @@ export default {
     routes: {
       type: Object,
       default: () => routes
-    },
-    labels: {
-      type: Object,
-      default: () => labels
     },
     detailsBook: {
       type: Array,
