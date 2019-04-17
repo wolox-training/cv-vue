@@ -8,14 +8,14 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     books: [],
-    seletedBook: {}
+    selectedBook: {}
   },
   mutations: {
     setBooks (state, payload) {
       state.books = payload
     },
     setSelectedBook (state, payload) {
-      state.seletedBook = payload
+      state.selectedBook = payload
     }
   },
   actions: {
@@ -26,7 +26,6 @@ export default new Vuex.Store({
         )
     },
     getBookById ({ commit }, id) {
-      console.log(id, 'id')
       BookService.getBookByID(id).then(res =>
         commit('setSelectedBook', res.data)
       )

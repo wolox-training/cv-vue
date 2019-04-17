@@ -38,3 +38,9 @@ export const labels = {
   signIn: 'Login',
   logout: 'Logout'
 }
+
+export const detailsBook = {
+  author: 'Book author',
+  publisher: 'Publisher',
+  year: 'Year of publication'
+}
