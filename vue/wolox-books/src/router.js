@@ -31,13 +31,9 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   const token = getToken()
-  if (to.fullPath === routes.login || to.fullPath === routes.sign_up) {
-    if (token) {
-      next(routes.home)
-    } else {
-      next()
-    }
-  } else if (!token) {
+  if (token && (to.fullPath === routes.login || to.fullPath === routes.sign_up)) {
+    next(routes.home)
+  } else if (!token && (to.fullPath !== routes.login && to.fullPath !== routes.sign_up)) {
     next(routes.login)
   } else {
     next()
