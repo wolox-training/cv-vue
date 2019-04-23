@@ -3,8 +3,8 @@
 
 .navbar-container {
   align-items: center;
-  background-color: $white;
-  border-top: 5px solid $cerulean;
+  background-color: var(--header-bg, $white);
+  border-top: 5px solid var(--header-top-line, $cerulean);
   box-shadow: 0 2px 4px 0 $box-shadow-navbar;
   display: flex;
   height: 100%;
