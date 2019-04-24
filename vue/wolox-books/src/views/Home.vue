@@ -4,9 +4,9 @@
       .icon-container
         img.wolox-icon-small(src='../assets/wolox_logo.svg' alt='Wolox logo')
         p.icon-title
-          | {{ labels.title }}
+          | {{ $t('app.title') }}
       button.logout(@click='logout()')
-        | {{ labels.logout }}
+        | {{ $t('app.logout') }}
     .books-container
       router-link.book(
         v-for='book of books'
@@ -26,8 +26,6 @@ import { removeToken } from '@/services/LocalStorageService'
 import store from '@/store'
 import routes from '@/routes'
 
-import { labels } from './constants'
-
 export default {
   name: 'navbar',
   store,
@@ -35,10 +33,6 @@ export default {
     routes: {
       type: Object,
       default: () => routes
-    },
-    labels: {
-      type: Object,
-      default: () => labels
     }
   },
   computed: mapState({

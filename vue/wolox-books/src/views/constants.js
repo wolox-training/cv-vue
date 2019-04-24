@@ -1,55 +1,50 @@
+import { i18n } from '../config/i18n'
+
 export const registerFieldsArray = [
   {
     name: 'first_name',
-    label: 'First name'
+    label: i18n.tc('app.firstName')
   },
   {
     name: 'last_name',
-    label: 'Last name'
+    label: i18n.tc('app.lastName')
   },
   {
     name: 'email',
-    label: 'Email'
+    label: i18n.tc('app.email')
   },
   {
     name: 'password',
-    label: 'Password'
+    label: i18n.tc('app.password')
   },
   {
     name: 'password_confirmation',
-    label: 'Password Confirmation'
+    label: i18n.tc('app.passConfirmation')
   }
 ]
 
 export const loginFieldsArray = [
   {
     name: 'email',
-    label: 'Email'
+    label: i18n.tc('app.email')
   },
   {
     name: 'password',
-    label: 'Password'
+    label: i18n.tc('app.password')
   }
 ]
-
-export const labels = {
-  title: 'BOOKS',
-  signUp: 'Sign up',
-  signIn: 'Login',
-  logout: 'Logout'
-}
 
 export const detailsBook = [
   {
     name: 'author',
-    value: 'Book author'
+    value: i18n.tc('bookDetail.authorDetail')
   },
   {
     name: 'publisher',
-    value: 'Publisher'
+    value: i18n.tc('bookDetail.publisherDetail')
   },
   {
     name: 'year',
-    value: 'Year of publication'
+    value: i18n.tc('bookDetail.yearDetail')
   }
 ]
