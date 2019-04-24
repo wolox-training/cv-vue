@@ -1,20 +1,43 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import routes from './routes'
+import { getToken } from './services/LocalStorageService'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
-    { path: '/', redirect: '/login' },
     {
-      path: '/sign_up',
+      path: routes.home,
+      name: 'home',
+      component: () => import(/* webpackChunkName: "home" */ './views/Home.vue')
+    },
+    {
+      path: routes.sign_up,
       name: 'sign_up',
       component: () => import(/* webpackChunkName: "sign_up" */ './views/Register.vue')
     },
     {
-      path: '/login',
+      path: routes.login,
       name: 'login',
       component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
+    },
+    {
+      path: '*',
+      redirect: routes.home
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const token = getToken()
+  if (token && (to.fullPath === routes.login || to.fullPath === routes.sign_up)) {
+    next(routes.home)
+  } else if (!token && (to.fullPath !== routes.login && to.fullPath !== routes.sign_up)) {
+    next(routes.login)
+  } else {
+    next()
+  }
+})
+
+export default router

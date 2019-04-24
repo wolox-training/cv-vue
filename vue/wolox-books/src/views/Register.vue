@@ -18,7 +18,7 @@
       button.base-form-button
         | {{ labels.signUp }}
     .container-button
-      router-link.base-form-button.link-form(to="/login")
+      router-link.base-form-button.link-form(:to='routes.login')
         | {{ labels.signIn }}
 </template>
 
@@ -28,8 +28,10 @@ import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
 import { PasswordValidator } from '@/utils/customValidator'
 import { getError } from '@/utils/generalFunctions'
 import AuthService from '@/services/AuthService'
+import { setToken } from '@/services/LocalStorageService'
 
 import { labels, registerFieldsArray } from './constants'
+import routes from '../routes'
 
 export default {
   name: 'register',
@@ -41,6 +43,10 @@ export default {
     labels: {
       type: Object,
       default: () => labels
+    },
+    routes: {
+      type: Object,
+      default: () => routes
     }
   },
   data () {
@@ -68,6 +74,7 @@ export default {
             if (response.data.error) {
               this.error = response.data.error[0]
             } else {
+              setToken(response.data.acccess_token)
               this.goLogin()
             }
           })
@@ -77,7 +84,7 @@ export default {
       return getError(vueInst)
     },
     goLogin () {
-      this.$router.push('/login')
+      this.$router.push(routes.login)
     }
   }
 }
