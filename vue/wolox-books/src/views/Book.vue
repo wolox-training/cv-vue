@@ -68,11 +68,11 @@ export default {
 @import 'src/scss/commons/navbar';
 
 .show-enter-active {
-  transition: all 1s ease;
+  transition: all 1.5s ease;
 }
 
 .show-enter, .show-leave-to {
-  transform: translateX(-200px);
+  transform: translateX(-100px) scale(0.7);
   opacity: 0;
 }
 
