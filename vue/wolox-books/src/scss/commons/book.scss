@@ -1,0 +1,35 @@
+@import 'src/scss/colors';
+@import 'src/scss/fonts';
+
+.book {
+  background-color: $white;
+  box-shadow: 4px 4px 4px $box-shadow-books;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 10px;
+  max-height: 235px;
+  max-width: 200px;
+  padding: 20px;
+  width: 100%;
+}
+
+.book-cover {
+  background-color: $gallery;
+  height: 100%;
+  margin-bottom: 15px;
+  max-width: 160px;
+  min-height: 140px;
+  width: 100%;
+}
+
+.book-title {
+  color: $black;
+  font-size: $book-author;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.book-author {
+  font-size: $book-author;
+}

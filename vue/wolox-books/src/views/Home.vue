@@ -7,9 +7,17 @@
           | BOOKS
       button.logout(@click='logout()')
         | Logout
+    .books-container
+      .book(v-for='book of books' :key='book.id')
+        img.book-cover(:src='book.image_url' :alt='book.title')
+        h4.book-title
+          | {{ book.title }}
+        span.book-author
+          | {{ book.author }}
 </template>
 
 <script>
+import BookService from '@/services/BookService'
 import { removeToken } from '@/services/LocalStorageService'
 
 import routes from '../routes'
@@ -22,11 +30,25 @@ export default {
       default: () => routes
     }
   },
+  data () {
+    return {
+      books: []
+    }
+  },
   methods: {
     logout () {
       removeToken()
       this.$router.push(routes.login)
     }
+  },
+  created () {
+    BookService.getBooks()
+      .then(res => {
+        this.books = res.data
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 }
 </script>
@@ -35,6 +57,7 @@ export default {
 @import 'src/scss/colors';
 @import 'src/scss/fonts';
 @import 'src/scss/commons/images';
+@import 'src/scss/commons/book';
 
 .navbar-container {
   align-items: center;
@@ -51,7 +74,7 @@ export default {
   align-items: center;
   display: flex;
   flex-direction: column;
-};
+}
 
 .logout,
 .icon-title {
@@ -67,7 +90,16 @@ export default {
 
 .home-container {
   background-color: $wild-sand;
-  height: 100vh;
+  height: 100%;
   width: 100%;
+}
+
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  margin: 40px auto;
+  max-width: 1100px;
+  widows: 100%;
 }
 </style>
