@@ -35,5 +35,21 @@ export const loginFieldsArray = [
 export const labels = {
   title: 'BOOKS',
   signUp: 'Sign up',
-  signIn: 'Login'
+  signIn: 'Login',
+  logout: 'Logout'
 }
+
+export const detailsBook = [
+  {
+    name: 'author',
+    value: 'Book author'
+  },
+  {
+    name: 'publisher',
+    value: 'Publisher'
+  },
+  {
+    name: 'year',
+    value: 'Year of publication'
+  }
+]
