@@ -19,14 +19,19 @@
 }
 
 .base-form-button {
-  background-color: $atlantis;
+  background-color: var(--bgButton, $atlantis);
   border-radius: 8px;
-  color: $white;
+  color: var(--colorTextButton, $white);
   font-size: $main-button;
   height: 45px;
   margin: 10px auto;
   max-width: 350px;
   width: 100%;
+
+  &:hover {
+    background-color: var(--colorTextButton, $white);
+    color: var(--bgButton, $atlantis);
+  }
 }
 
 .base-form-title {

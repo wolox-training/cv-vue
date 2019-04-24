@@ -15,7 +15,7 @@
             | {{ showError($v.login[field.name]) }}
       p.field-error(v-show='error')
         | {{ error }}
-      button.base-form-button
+      button.base-form-button(:style='{"--bgButton": bgButton,"--colorTextButton": colorTextButton}')
         | {{ $t('app.signIn') }}
     .container-button
       router-link.base-form-button.link-form(:to='routes.sign_up')
@@ -42,6 +42,22 @@ export default {
     routes: {
       type: Object,
       default: () => routes
+    },
+    bgButton: {
+      type: String,
+      default: '#EE0034'
+    },
+    colorTextButton: {
+      type: String,
+      default: '#00ADEE'
+    }
+  },
+  computed: {
+    btnColor () {
+      return {
+        '--bgButton': this.bgButton,
+        '--colorTextButton': this.colorTextButton
+      }
     }
   },
   data () {

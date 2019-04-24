@@ -1,6 +1,6 @@
 <template lang="pug">
-  .home-container
-    .navbar-container
+  .home-container(:style='pageColor')
+    .navbar-container(:style='navbarColor')
       .icon-container
         img.wolox-icon-small(src='../assets/wolox_logo.svg' alt='Wolox logo')
         p.icon-title
@@ -33,11 +33,36 @@ export default {
     routes: {
       type: Object,
       default: () => routes
+    },
+    bgColor: {
+      type: String,
+      default: '#DDD'
+    },
+    bgHeaderColor: {
+      type: String,
+      default: '#FFF'
+    },
+    HeaderTopLine: {
+      type: String,
+      default: '#A6CB46'
     }
   },
-  computed: mapState({
-    books: state => state.books
-  }),
+  computed: {
+    ...mapState({
+      books: state => state.books
+    }),
+    pageColor () {
+      return {
+        '--page-color': this.bgColor
+      }
+    },
+    navbarColor () {
+      return {
+        '--header-bg': this.bgHeaderColor,
+        '--header-top-line': this.HeaderTopLine
+      }
+    }
+  },
   methods: {
     logout () {
       removeToken()
@@ -57,7 +82,7 @@ export default {
 @import 'src/scss/commons/navbar';
 
 .home-container {
-  background-color: $wild-sand;
+  background-color: var(--page-color, $wild-sand);
   height: 100%;
   width: 100%;
 }
