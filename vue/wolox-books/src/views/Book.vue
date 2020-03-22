@@ -7,21 +7,21 @@
           | {{ $t('app.title') }}
       button.logout(@click='logout()')
         | {{ $t('app.logout') }}
-    .detail-container
-      img.detail-cover(:src='selectedBook.image_url' :alt='selectedBook.title')
-      .detail-book
-        .book-title-genre
-          h1.title
-           | {{ selectedBook.title }}
-          span.genre
-           | ({{ selectedBook.genre }})
-        .other-details
-          .detail(v-for='detail of detailsBook')
-            h4.item
-              | {{ detail.value }}:
-            span.value
-              | {{ selectedBook[detail.name] }}
-
+    transition(appear name='show')
+      .detail-container
+        img.detail-cover(:src='selectedBook.image_url' :alt='selectedBook.title')
+        .detail-book
+          .book-title-genre
+            h1.title
+              | {{ selectedBook.title }}
+            span.genre
+              | ({{ selectedBook.genre }})
+          .other-details
+            .detail(v-for='detail of detailsBook')
+              h4.item
+                | {{ detail.value }}:
+              span.value
+                | {{ selectedBook[detail.name] }}
 </template>
 
 <script>
@@ -66,6 +66,15 @@ export default {
 @import 'src/scss/commons/images';
 @import 'src/scss/commons/book';
 @import 'src/scss/commons/navbar';
+
+.show-enter-active {
+  transition: all 1.5s ease;
+}
+
+.show-enter, .show-leave-to {
+  transform: translateX(-100px) scale(0.7);
+  opacity: 0;
+}
 
 .book-container {
   background-color: $wild-sand;
